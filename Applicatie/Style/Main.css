@@ -1,5 +1,6 @@
 @import "responsive.css";
 @import "nav.css";
+@import "login.css";
 
 * {
     padding: 0;
@@ -8,19 +9,31 @@
     font-family: "Roboto", sans-serif;
   }
   
-  body {
+body {
     background-color: rgb(229, 228, 224);
   }
   
-  .active {
-    border-bottom: 3px solid #83e683;
+.active {
+    border-bottom: 3px solid #a81010 ;
   }
 
-  a {
+a {
     color: black;
     text-decoration: none;
   }
   
-  .hidden {
+.hidden {
     display: none;
+  }
+.container {
+    min-height: calc(100vh - 77px);
+    padding: 0px 100px;
+    position: relative;
+    z-index: 100;
+    padding-bottom: 30px;
+  }
+  
+.container-center {
+    display: flex;
+    align-items: center;
   }
