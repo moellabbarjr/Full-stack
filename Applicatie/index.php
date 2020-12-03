@@ -1,7 +1,8 @@
 <?php
 function my_autoloader($class) {
     include 'Classes/' . $class . '.php';
-}?>
+}
+?>
 <!DOCTYPE html>
 <html lang="nl">
 <head>

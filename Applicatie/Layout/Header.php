@@ -14,7 +14,7 @@ function my_autoloader($class) {
 <nav>
     <div class="links">
       <i class="fas fa-apple-alt"></i>
-      <p>VVZA Portaal</p>
+      <p class="navTitle">VVZA Portaal</p>
     </div>
     <div class="rechts">
     <ul>

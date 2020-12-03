@@ -29,3 +29,6 @@ nav {
   nav .rechts ul li {
     list-style-type: none;
   }
+  .navTitle {
+    font-weight: bold;
+  }
