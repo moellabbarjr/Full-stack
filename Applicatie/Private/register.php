@@ -1,6 +1,7 @@
 <?php include("../Layout/Header.php"); 
 
-if(isset($_POST['login'])){
+$user = new User();
+if(isset($_POST['register'])){
     $email = htmlspecialchars($_POST['email']);
     $password = htmlspecialchars($_POST['password']);
     $passwordRepeat = htmlspecialchars($_POST['passwordRepeat']);
@@ -44,7 +45,7 @@ if(isset($_POST['login'])){
           </div>
           <div class="button-container">
             <!-- <button id="loginBtn" type="button" name="login" class="btn">Inloggen</button> -->
-            <button type="button" name="register" class="btn">Registreren</button>
+            <button type="submit" name="register" class="btn">Registreren</button>
           </div>
         </form>
       </div>
