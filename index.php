@@ -46,8 +46,8 @@ function GetWeek() {
 <body>
   <nav>
     <div class="links">
-      <i class="fas fa-apple-alt"></i>
-      <p>VVZA Portaal</p>
+    <image src="Style/igootje.png" class="vvzaIcon"></image>
+    <p>VVZA Portaal</p>
     </div>
     <div class="rechts">
     <ul>
