@@ -1,7 +1,9 @@
 <?php
-function my_autoloader($class) {
-    include '../Classes/' . $class . '.php';
-}?>
+spl_autoload_register(function($class){
+  require '../Classes/' . $class . '.php';
+
+}); 
+?>
 <!DOCTYPE html>
 <html lang="nl">
 <head>

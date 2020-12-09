@@ -1,6 +1,7 @@
 <?php include("../Layout/Header.php"); 
 
-$user = new User();
+$user = (new User);
+
 if(isset($_POST['register'])){
     $email = htmlspecialchars($_POST['email']);
     $password = htmlspecialchars($_POST['password']);
@@ -8,8 +9,8 @@ if(isset($_POST['register'])){
     $firstname = htmlspecialchars($_POST['firstname']);
     $lastname = htmlspecialchars($_POST['lastname']);
     if($password == $passwordRepeat){
-        password_hash($password);
-        $user->register($email,$firstname,$lastname,$password);
+        $hashPass = password_hash($password, PASSWORD_DEFAULT);
+        $user->register($email,$firstname,$lastname,$hashPass);
         return true;
     }else{
         return false;
