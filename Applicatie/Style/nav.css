@@ -6,7 +6,8 @@ nav {
     justify-content: space-between;
     padding: 0px 100px;
     background-color: rgb(172, 172, 172);
-    position: fixed;
+    position: sticky;
+    top: 0;
     z-index: 9999;
   }
   
