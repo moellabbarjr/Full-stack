@@ -46,7 +46,7 @@ if(isset($_POST['register'])){
           </div>
           <div class="button-container">
             <!-- <button id="loginBtn" type="button" name="login" class="btn">Inloggen</button> -->
-            <button type="submit" name="register" class="btn">Registreren</button>
+            <button type="submit" name="register" class="btn">Aanmelden</button>
           </div>
         </form>
       </div>

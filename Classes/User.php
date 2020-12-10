@@ -13,7 +13,7 @@ class User
             return $result;
         
         }
-        catch(PDOxception $e){
+        catch(PDOexception $e){
             echo json_encode([
                 'error' => $e->getMessage(),
             ]);
@@ -23,5 +23,31 @@ class User
 
     exit;
     }
-}
+
+
+
+    public function login($username,$password){
+        try{
+            $conn = (new DB)->connect();
+
+            $sql = $conn->prepare("SELECT user_id, first_name, password FROM users WHERE first_name = '$username' AND password = '$password'");
+
+            $sql->execute([$username,$password]);
+            $result = $sql->fetch();
+            $connection = null;
+            return $result;
+        }
+        catch(PDOexception $e){
+            echo json_encode([
+                'error' => $e->getMessage(),
+            ]);
+    
+            print "Error!: " . $e->getMessage() . "<br/>";
+        }
+
+    exit;
+    }
+} 
+
+
 
