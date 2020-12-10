@@ -21,32 +21,27 @@ class User
     
             print "Error!: " . $e->getMessage() . "<br/>";
         }
-
     exit;
     }
 
-
-
     public function login($email,$password){
-        try{
-            $conn = (new DB)->connect();
+        try {
+            $connection = DB::connect();
 
-            $sql = $conn->prepare("SELECT * FROM user WHERE email = $email AND password = $password");
-
-            $sql->execute([$email,$password]);
-            $result = $sql->fetch();
-            $connection = null;
-            return $result;
-
-        }
-
-        catch(PDOexception $e){
-            echo json_encode([
-                'error' => $e->getMessage(),
-            ]);
-    
-            print "Error!: " . $e->getMessage() . "<br/>";
-        }
+            $stmt= $connection->prepare("SELECT * FROM `user` WHERE email = ?");
+            $stmt->execute([$email]);
+            $result = $stmt->fetchAll();
+            
+            if (count($result) == 1) {
+                if (password_verify($password, $result[0][4])) {
+                    $_SESSION["sessionid"] = session_id();
+                    $_SESSION["loggedin"] = $result[0][0];
+                    header("Location: ../index.php");
+                }
+            }
+        } catch (PDOException $e) {
+            return false;
+        } 
 
     exit;
     }

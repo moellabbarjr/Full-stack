@@ -2,6 +2,12 @@
 date_default_timezone_set("Europe/Amsterdam");
 setlocale(LC_TIME, 'Dutch');
 
+$_SESSION["test"] = "pizza";
+
+var_dump($_SESSION["sessionid"]);
+var_dump($_SESSION["loggedin"]);
+var_dump($_SESSION["test"]);
+
 function my_autoloader($class) {
     include 'Classes/' . $class . '.php';
 }
