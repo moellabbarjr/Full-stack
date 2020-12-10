@@ -15,7 +15,7 @@ spl_autoload_register(function($class){
 <body>
 <nav>
     <div class="links">
-      <image src="Style/igootje.png" class="vvzaIcon"></image>
+      <image src="../Style/igootje.png" class="vvzaIcon"></image>
       <p class="navTitle">VVZA Portaal</p>
     </div>
     <div class="rechts">

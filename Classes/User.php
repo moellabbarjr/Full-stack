@@ -26,13 +26,13 @@ class User
 
 
 
-    public function login($username,$password){
+    public function login($email,$password){
         try{
             $conn = (new DB)->connect();
 
-            $sql = $conn->prepare("SELECT user_id, first_name, password FROM users WHERE first_name = '$username' AND password = '$password'");
+            $sql = $conn->prepare("SELECT * FROM user WHERE email = $email AND password = $password");
 
-            $sql->execute([$username,$password]);
+            $sql->execute([$email,$password]);
             $result = $sql->fetch();
             $connection = null;
             return $result;
