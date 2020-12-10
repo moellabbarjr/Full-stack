@@ -1,4 +1,5 @@
 <?php
+if(!isset($_SESSION)) session_start();
 class User
 {
     public function register($email,$firstname,$lastname,$password) {
@@ -36,7 +37,9 @@ class User
             $result = $sql->fetch();
             $connection = null;
             return $result;
+
         }
+
         catch(PDOexception $e){
             echo json_encode([
                 'error' => $e->getMessage(),

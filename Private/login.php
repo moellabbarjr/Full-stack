@@ -1,5 +1,4 @@
 <?php include("../Layout/Header.php"); 
-
 $login = (new User);
 
   if(isset($_POST['submit'])){
@@ -9,6 +8,8 @@ $login = (new User);
       
     $login->login($email,$hashPass);
 
+    
+    var_dump($_SESSION);
   }
 
 ?>
