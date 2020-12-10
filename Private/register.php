@@ -26,11 +26,11 @@ if(isset($_POST['register'])){
         <form action="" method="POST">
           <div class="input-group">
             <label for="loginEmail">E-mailadres:</label>
-            <input id="loginEmail" type="text" placeholder="E-mailadres" name="email" required>
+            <input id="loginEmail" type="email" placeholder="E-mailadres" name="email" required>
           </div>
           <div class="input-group">
             <label for="loginPassword">Voornaam:</label>
-            <input id="loginPassword" type="text" placeholder="Voornaam" name="firstname" class="test" required>
+            <input id="loginPassword" type="text" placeholder="Voornaam" name="firstname" class="aligner" required>
           </div>
           <div class="input-group">
             <label for="loginPassword">Achternaam:</label>
