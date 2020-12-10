@@ -21,8 +21,8 @@ spl_autoload_register(function($class){
     <div class="rechts">
     <ul>
       <li>
-        <a class="active" href="../index.php">Home</a> |  
-        <a class="active" href="login.php">Login</a>
+        <a href="../index.php">Home</a> |  
+        <a href="login.php">Login</a>
       </li>
     </ul>
     </div>

@@ -45,8 +45,8 @@ if (isset($_POST["reset"])) {
     <div class="rechts">
     <ul>
       <li>
-        <a class="active" href="index.php">Home</a>
-        <a class="active" href="./Private/login.php">Login</a>
+        <a class="active" href="index.php">Home</a> |
+        <a href="./Private/login.php">Login</a>
       </li>
     </ul>
     </div>
