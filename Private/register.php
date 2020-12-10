@@ -30,7 +30,7 @@ if(isset($_POST['register'])){
           </div>
           <div class="input-group">
             <label for="loginPassword">Voornaam:</label>
-            <input id="loginPassword" type="text" placeholder="Voornaam" name="firstname" required>
+            <input id="loginPassword" type="text" placeholder="Voornaam" name="firstname" class="test" required>
           </div>
           <div class="input-group">
             <label for="loginPassword">Achternaam:</label>
@@ -41,7 +41,7 @@ if(isset($_POST['register'])){
             <input id="loginPassword" type="password" placeholder="Wachtwoord" name="password" required>
           </div>
           <div class="input-group">
-            <label for="loginPassword">Herhaal Wachtwoord:</label>
+            <label for="loginPassword">Wachtwoord:</label>
             <input id="loginPassword" type="password" placeholder="Herhaal Wachtwoord" name="passwordRepeat" required>
           </div>
           <div class="button-container">

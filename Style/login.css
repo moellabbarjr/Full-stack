@@ -56,6 +56,9 @@
     background-color: #e3464c;
     border-color: #e3464c;
   }
+  .test {
+    margin-left: 1.0rem;
+  }
   /* MOBILE */
   @media only screen and (max-width: 825px) {
     .loginCard {
