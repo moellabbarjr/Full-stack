@@ -1,9 +1,3 @@
-<?php
-spl_autoload_register(function($class){
-  require '../Classes/' . $class . '.php';
-
-}); 
-?>
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -21,8 +15,8 @@ spl_autoload_register(function($class){
     <div class="rechts">
     <ul>
       <li>
-        <a href="../index.php">Home</a> |  
-        <a href="login.php">Login</a>
+        <a href="dashboard.php">dashboard</a> |  
+        <a href="loguit.php">loguit</a>
       </li>
     </ul>
     </div>
