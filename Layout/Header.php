@@ -3,6 +3,8 @@ spl_autoload_register(function($class){
   require '../Classes/' . $class . '.php';
 
 }); 
+
+if(!isset($_SESSION)) session_start();
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -17,7 +19,7 @@ spl_autoload_register(function($class){
 <body>
   <nav>
     <div class="links">
-    <a href="../index.php">
+    <a href="../index.php" class="vvzaIcon">
       <image src="../Style/igootje.png"></image>
     </a>
     <p>VVZA Portaal</p>
@@ -26,7 +28,12 @@ spl_autoload_register(function($class){
     <ul>
       <li>
         <a class="active" href="../index.php">Home</a>
-        <a class="active" href="../Private/login.php">Login</a>
+        <?php if(!isset($_SESSION["sessionid"])) { ?>
+          <a class="active" href="../Private/login.php">Login</a>
+        <?php } ?>
+        <?php if(isset($_SESSION["sessionid"])) { ?>
+          <li><a href="../logout.php">logout</a></li>
+        <?php } ?>
       </li>
     </ul>
     </div>

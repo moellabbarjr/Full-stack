@@ -1,5 +1,4 @@
 <?php
-session_start();
 date_default_timezone_set("Europe/Amsterdam");
 
 function my_autoloader($class) {
