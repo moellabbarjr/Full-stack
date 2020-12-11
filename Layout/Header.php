@@ -1,10 +1,11 @@
 <?php
-spl_autoload_register(function($class){
-  require '../Classes/' . $class . '.php';
+spl_autoload_register(function ($class) {
+    require '../Classes/' . $class . '.php';
+});
 
-}); 
-
-if(!isset($_SESSION)) session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -20,20 +21,24 @@ if(!isset($_SESSION)) session_start();
   <nav>
     <div class="links">
     <a href="../index.php" class="vvzaIcon">
-      <image src="../Style/igootje.png"></image>
+      <image class="vvzaIcon" src="../Style/igootje.png"></image>
     </a>
-    <p>VVZA Portaal</p>
+    <p class="navTitle">VVZA Portaal</p>
     </div>
     <div class="rechts">
     <ul>
       <li>
         <a class="active" href="../index.php">Home</a>
-        <?php if(!isset($_SESSION["sessionid"])) { ?>
+        <?php if (!isset($_SESSION["sessionid"])) {
+    ?>
           <a class="active" href="../Private/login.php">Login</a>
-        <?php } ?>
-        <?php if(isset($_SESSION["sessionid"])) { ?>
+        <?php
+} ?>
+        <?php if (isset($_SESSION["sessionid"])) {
+        ?>
           <li><a href="../logout.php">logout</a></li>
-        <?php } ?>
+        <?php
+    } ?>
       </li>
     </ul>
     </div>
