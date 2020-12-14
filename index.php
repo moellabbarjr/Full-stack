@@ -32,7 +32,6 @@ if (isset($_POST["reset"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Style/Main.css">
-    <script src="Javascript/script.js"></script>
     <script src="https://kit.fontawesome.com/f1e6762606.js" crossorigin="anonymous"></script>
     <title>VVZA Portaal</title>
 </head>
@@ -51,6 +50,20 @@ if (isset($_POST["reset"])) {
     </ul>
     </div>
   </nav>
+
+<div id="modal">
+  <div id="modal-content">
+    <div id="modal-head">
+      <div id="modal-title">Voeg een afspraak toe</div>
+      <button id="close" class="modal-close"><i class="fas fa-times"></i></button>
+    </div>
+
+    <div id="modal-body">
+      break elements go <br><br><br><br><br><br> xd
+    </div>
+  </div>
+</div>
+
   <div id="calendar">
     <form action="" method="POST">
       <div id="calendar-head">
@@ -68,6 +81,11 @@ if (isset($_POST["reset"])) {
     <div id="calendar-body">
       <?=$calendar->GetTasks()?>
     </div>
+
+    <div id="calendar-foot">
+      <button id="add" class="calendar-button"><i class="fas fa-plus"></i></button>
+    </div>
   </div>
+  <script src="Javascript/script.js"></script>
 </body>
 </html>
