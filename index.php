@@ -35,8 +35,21 @@ function GetWeek() {
   
   return "Week {$week} - {$year}";
 }
-require_once('layout/Header.php') 
+require_once('layout/Header.php')
 ?>
+
+<div id="modal">
+  <div id="modal-content">
+    <div id="modal-head">
+      <div id="modal-title">Voeg een afspraak toe</div>
+      <button id="close" class="modal-close"><i class="fas fa-times"></i></button>
+    </div>
+
+    <div id="modal-body">
+      break elements go <br><br><br><br><br><br> xd
+    </div>
+  </div>
+</div>
 
   <div id="calendar">
     <form action="" method="POST">
@@ -54,6 +67,10 @@ require_once('layout/Header.php')
 
     <div id="calendar-body">
       <?=$calendar->GetTasks()?>
+    </div>
+
+    <div id="calendar-foot">
+      <button id="add" class="calendar-button"><i class="fas fa-plus"></i></button>
     </div>
   </div>
 <?php require_once('layout/Footer.php') ?>
