@@ -1,11 +1,10 @@
 <?php
-date_default_timezone_set("Europe/Amsterdam");
-setlocale(LC_TIME, 'Dutch');
+require_once('Layout/Header.php');
 
-function my_autoloader($class) {
-    include 'Classes/' . $class . '.php';
-}
-include 'Classes/Calendar.php'; // autoloader ish broken :(
+// function my_autoloader($class) {
+//     include 'Classes/' . $class . '.php';
+// }
+// include 'Classes/Calendar.php'; // autoloader ish broken :(
 
 $calendar = new Calendar();
 
@@ -24,18 +23,6 @@ if (isset($_POST["next"])) {
 if (isset($_POST["reset"])) {
   $_SESSION["week_offset"] = 0;
 }
-
-$query = "";
-
-function GetWeek() {
-  $offset = $_SESSION["week_offset"];
-
-  $week = intval(date("W", strtotime("{$offset} week")));
-  $year = date("o", strtotime("{$offset} week")); // o haalt het jaar van de week. Y haalt het huidige jaar. We moeten nog bespreken welke we willen.
-  
-  return "Week {$week} - {$year}";
-}
-require_once('layout/Header.php')
 ?>
 
 <div id="modal">

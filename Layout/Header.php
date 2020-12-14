@@ -1,10 +1,11 @@
 <?php
-spl_autoload_register(function($class){
-  require '../Classes/' . $class . '.php';
-
-}); 
-
 if(!isset($_SESSION)) session_start();
+date_default_timezone_set("Europe/Amsterdam");
+setlocale(LC_TIME, 'Dutch');
+
+spl_autoload_register(function($class){
+  require $_SERVER['DOCUMENT_ROOT'] . '/Classes/' . $class . '.php';
+});
 ?>
 <!DOCTYPE html>
 <html lang="nl">
