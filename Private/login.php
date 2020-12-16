@@ -13,6 +13,9 @@ $login = (new User);
   }
 
 ?>
+
+<p class="Hoofdtext">Login</p>
+
 <div class="container container-center">
 <div class="loginCard">
         <div class="title">

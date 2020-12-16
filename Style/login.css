@@ -59,6 +59,8 @@
   .alinger {
     margin-left: 1.0rem;
   }
+
+
   /* MOBILE */
   @media only screen and (max-width: 825px) {
     .loginCard {

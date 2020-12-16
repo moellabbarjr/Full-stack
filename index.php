@@ -25,6 +25,8 @@ if (isset($_POST["reset"])) {
 }
 ?>
 
+<p class="Hoofdtext">Home</p>
+
 <div id="modal">
   <div id="modal-content">
     <div id="modal-head">

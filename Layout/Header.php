@@ -13,23 +13,27 @@ spl_autoload_register(function($class){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Style/Main.css">
+    <link rel="icon" href="../Style/igootje.png">
     <script src="https://kit.fontawesome.com/f1e6762606.js" crossorigin="anonymous"></script>
-    <title>VVZA Portaal</title>
+    <title>VVZA Vrijwilligers Portaal</title>
 </head>
 <body>
   <nav>
     <div class="links">
-    <a href="../index.php" class="vvzaIcon">
-      <image src="../Style/igootje.png"></image>
+    <a href="../index.php" class="">
+      <image class="vvzaIcon" src="../Style/igootje.png"></image>
     </a>
-    <p>VVZA Portaal</p>
+    <p>Vrijwilligers portaal</p>
+    
     </div>
+   
     <div class="rechts">
+      
     <ul>
       <li>
-        <a class="active" href="../index.php">Home</a>
+        <a href="../index.php">Home</a> | 
         <?php if(!isset($_SESSION["sessionid"])) { ?>
-          <a class="active" href="../Private/login.php">Login</a>
+          <a href="../Private/login.php">Login</a>
         <?php } ?>
         <?php if(isset($_SESSION["sessionid"])) { ?>
           <li><a href="../logout.php">logout</a></li>

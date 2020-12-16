@@ -18,6 +18,9 @@ if(isset($_POST['register'])){
 }
 
 ?>
+
+<p class="Hoofdtext">Registeer</p>
+
 <div class="container container-center">
 <div class="loginCard">
         <div class="title">
@@ -41,7 +44,7 @@ if(isset($_POST['register'])){
             <input id="loginPassword" type="password" placeholder="Wachtwoord" name="password" required>
           </div>
           <div class="input-group">
-            <label for="loginPassword">Wachtwoord:</label>
+            <label for="loginPassword">Herhaal Wachtwoord:</label>
             <input id="loginPassword" type="password" placeholder="Herhaal Wachtwoord" name="passwordRepeat" required>
           </div>
           <div class="button-container">

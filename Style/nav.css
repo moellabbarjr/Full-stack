@@ -1,14 +1,15 @@
 nav {
     display: flex;
     align-items: center;
-    width: 100vw;
+    width: 100%;
     height: 77px;
     justify-content: space-between;
     padding: 0px 100px;
-    background-color: rgb(172, 172, 172);
+
     position: sticky;
     top: 0;
     z-index: 1;
+    border-bottom: 1px solid black;
   }
   
   nav .links {
@@ -34,7 +35,22 @@ nav {
   .navTitle {
     font-weight: bold;
   }
+  nav ul li a:hover{
+    border-bottom: 3px solid red;
+  }
 
   .vvzaIcon{
-    height: 100%;
+    margin-top: 10px;
+    width: 6rem;
+  }
+
+  .vvzaIcon:hover{
+    border: 1px dotted red;
+    border-radius: 50px;
+  }
+
+  .Hoofdtext{
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
   }
