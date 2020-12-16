@@ -1,10 +1,10 @@
 <?php
+if(!isset($_SESSION)) session_start();
+
 spl_autoload_register(function($class){
   require '../Classes/' . $class . '.php';
 
 }); 
-
-if(!isset($_SESSION)) session_start();
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -32,7 +32,7 @@ if(!isset($_SESSION)) session_start();
           <a class="active" href="../Private/login.php">Login</a>
         <?php } ?>
         <?php if(isset($_SESSION["sessionid"])) { ?>
-          <li><a href="../logout.php">logout</a></li>
+          <a class="active" href="../logout.php">logout</a>
         <?php } ?>
       </li>
     </ul>

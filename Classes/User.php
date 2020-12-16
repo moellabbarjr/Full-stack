@@ -36,6 +36,7 @@ class User
                 if (password_verify($password, $result[0][4])) {
                     $_SESSION["sessionid"] = session_id();
                     $_SESSION["loggedin"] = $result[0][0];
+                    $_SESSION["role"] = $result[0][5];
                     header("Location: ../index.php");
                 }
             }
