@@ -8,7 +8,7 @@ nav {
     background-color: #3b3937;
     position: sticky;
     top: 0;
-    z-index: 9999;
+    z-index: 1;
   }
 
   nav .links {
