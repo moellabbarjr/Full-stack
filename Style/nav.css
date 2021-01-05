@@ -5,29 +5,29 @@ nav {
     height: 77px;
     justify-content: space-between;
     padding: 0px 100px;
-    background-color: rgb(172, 172, 172);
+    background-color: #3b3937;
     position: sticky;
     top: 0;
-    z-index: 9999;
+    z-index: 1;
   }
-  
+
   nav .links {
     height: 100% ;
     display: flex;
-    color: #a81010 ;
+    color: #a81010;
     font-size: 45px;
     align-items: center;
   }
-  
+
   nav .links p {
     font-size: 20px;
     margin-left: 10px;
   }
-  
+
   nav .rechts {
     font-size: 20px;
   }
-  
+
   nav .rechts ul li {
     list-style-type: none;
   }
