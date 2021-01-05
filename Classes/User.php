@@ -2,6 +2,7 @@
 if(!isset($_SESSION)) session_start();
 class User
 {
+    //Function to register a user
     public function register($email,$firstname,$lastname,$password) {
         try{
             $conn = (new DB)->connect();
@@ -14,7 +15,7 @@ class User
             return $result;
         
         }
-        catch(PDOexception $e){
+        catch(PDOexception $e) {
             echo json_encode([
                 'error' => $e->getMessage(),
             ]);
@@ -24,6 +25,7 @@ class User
     exit;
     }
 
+    //Function to login a user
     public function login($email,$password){
         try {
             $connection = DB::connect();
@@ -41,11 +43,82 @@ class User
                 }
             }
         } catch (PDOException $e) {
-            return false;
-        } 
-
+            echo json_encode([
+                'error' => $e->getMessage(),
+            ]);
+    
+            print "Error!: " . $e->getMessage() . "<br/>";
+        }
     exit;
     }
+
+    //Function to get all users
+    public function getAllUsers() {
+        try{
+            $conn = (new DB)->connect();
+
+            $stmt = $conn->query("SELECT * FROM user");
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $connection = null;
+            return $result;
+
+        }
+        catch (PDOException $e) {
+            echo json_encode([
+                'error' => $e->getMessage(),
+            ]);
+    
+            print "Error!: " . $e->getMessage() . "<br/>";
+        }
+        exit;
+    }
+    
+    public function getUserById($id) {
+        try{
+            $conn = (new DB)->connect();
+
+            $stmt = $conn->prepare("SELECT * FROM user WHERE user_id  = ?");
+            $stmt->execute([$id]);
+            
+            $result = $stmt->fetch();
+            $connection = null;
+
+            return $result;
+
+        }
+        catch (PDOException $e) {
+            echo json_encode([ 
+                'error' => $e->getMessage(),
+
+            ]);
+
+            print "Error!: " . $e->getMessage() . "<br/>";
+        }
+        exit;
+    }
+
+    public function updateUser($id, $firstName, $lastName, $email) {
+        try{
+            $conn = (new DB)->connect();
+
+            $stmt = $conn->prepare("UPDATE user SET first_name=?, last_name=?,email=?  WHERE user_id = ? ");
+            $stmt->execute([$firstName, $lastName, $email, $id]);
+
+            return true;
+
+        }
+        catch (PDOException $e) {
+            echo json_encode([ 
+                'error' => $e->getMessage(),
+
+            ]);
+
+            print "Error!: " . $e->getMessage() . "<br/>";
+        }
+        exit;
+    }
+    
 } 
 
 

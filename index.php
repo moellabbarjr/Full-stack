@@ -53,7 +53,6 @@ if (isset($_GET["reset"])) {
         <button type="submit" name="next" class="calendar-arrow"><i class="fas fa-arrow-right"></i></button>
       </div>
     </form>
-
     <div id="calendar-body">
       <?=$calendar->GetTasks($offset)?>
     </div>

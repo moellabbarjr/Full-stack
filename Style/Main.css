@@ -2,6 +2,7 @@
 @import "responsive.css";
 @import "nav.css";
 @import "login.css";
+@import "table.css";
 
 * {
     padding: 0;
@@ -19,7 +20,7 @@ body {
   }
 
 a {
-    color: white;
+    color: white !important;
     text-decoration: none;
   }
 
