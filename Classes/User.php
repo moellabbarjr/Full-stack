@@ -118,6 +118,26 @@ class User
         }
         exit;
     }
+    public function deleteUser($id){
+        try{
+            $conn = (new DB)->connect();
+
+            $stmt = $conn->prepare("DELETE FROM user WHERE user_id = ? ");
+            $stmt->execute([$id]);
+
+            return true;
+
+        }
+        catch (PDOException $e) {
+            echo json_encode([ 
+                'error' => $e->getMessage(),
+
+            ]);
+
+            print "Error!: " . $e->getMessage() . "<br/>";
+        }
+        exit;
+    }
     
 } 
 

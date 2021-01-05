@@ -38,8 +38,18 @@ spl_autoload_register(function ($class) {
         <?php
 } ?>
         <?php if (isset($_SESSION["sessionid"])) {
+          
+            if($_SERVER['REQUEST_URI'] == "/index.php"){
+              ?>
+            <li><a href="Private/logout.php">Log uit</a></li>
+        <?php
+
+            }else{
+
         ?>
-          <li><a href="../logout.php">logout</a></li>
+          <li><a href="logout.php">Log uit</a></li>
+          <?php }
+          ?>
         <?php
     } ?>
 
