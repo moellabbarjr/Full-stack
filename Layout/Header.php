@@ -33,6 +33,7 @@ spl_autoload_register(function ($class) {
         <?php if (!isset($_SESSION["sessionid"])) {
     ?>
           <a class="active" href="../Private/login.php">Login</a>
+
         <?php
 } ?>
         <?php if (isset($_SESSION["sessionid"])) {
@@ -40,6 +41,7 @@ spl_autoload_register(function ($class) {
           <li><a href="../logout.php">logout</a></li>
         <?php
     } ?>
+
       </li>
     </ul>
     </div>
