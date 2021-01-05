@@ -41,7 +41,7 @@ if (isset($_POST)) {
     $_SESSION["week_offset"] = 0; // Als de pagina word herladen zet hij ook weer de huidige week neer
 }
 
-require_once('layout/Header.php') 
+require_once('layout/Header.php');
 ?>
 
   <div id="calendar">
