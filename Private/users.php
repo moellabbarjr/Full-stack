@@ -1,10 +1,29 @@
 <?php include("../Layout/Header.php"); 
-$records = (new User)->getAllUsers()
+  if (!isset($_SESSION)) {
+    session_start();
+  }
+$records = (new User)->getAllUsers();
+$deny = NULL;
+if($_SESSION['role'] == 1 ){
+    $deny = true;
+    echo("Uw heeft niet de rechten om dit te zien, over 5 seconden word u teruggestuurd naar uw dashboard.");
+    header("refresh:5;url=dashboard.php");
+}
+if($_SESSION['role'] == 2 ){
+    $deny = true;
+    echo("Uw heeft niet de rechten om dit te zien, over 5 seconden word u teruggestuurd naar uw dashboard.");
+    header("refresh:5;url=dashboard.php");
+}
+
+
+if($deny == false){
+
 ?>
 <div class="container">
-
     <div class="searchdiv">
-        <input type="text" placeholder=" Zoeken..." class="searchbar"> <button class="btn btn-primary search-btn"><i class='fas fa-search'></i></button>
+        <form method="GET" action="searchedUser.php">
+            <input type="text" placeholder=" Zoeken..." class="searchbar" name="search"><button class="btn btn-primary search-btn" name="submit"><i class='fas fa-search'></i></button>
+        </form>
     </div>
     <table class="table table-striped table-responsive-md btn-table">
 
@@ -20,7 +39,8 @@ $records = (new User)->getAllUsers()
         </thead>
 
         <tbody>
-        <?php foreach ($records as $record) {
+        <?php 
+            foreach ($records as $record) {
                 echo '<tr>';
                 echo '<th scope="row">' . $record["user_id"] . '</th>';
                 echo '<td>' . $record["email"] . '</td>';
@@ -34,12 +54,14 @@ $records = (new User)->getAllUsers()
                     </td>';
                 echo '</tr>';
             }
-
         ?>
         </tbody>
 
     </table>
 </div>
+<?php
+} 
+?>
 
 
 <?php include("../Layout/Footer.php"); 

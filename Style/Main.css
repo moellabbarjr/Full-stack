@@ -3,6 +3,7 @@
 @import "nav.css";
 @import "login.css";
 @import "table.css";
+@import "dashboard.css";
 
 * {
     padding: 0;

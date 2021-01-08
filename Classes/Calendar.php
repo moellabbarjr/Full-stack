@@ -1,5 +1,4 @@
 <?php
-include 'Classes/DB.php'; // pliz tell me how da autoloader works
 
 class Calendar
 {

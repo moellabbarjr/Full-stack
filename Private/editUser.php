@@ -1,5 +1,17 @@
 <?php include("../Layout/Header.php"); 
 
+$deny = NULL;
+if($_SESSION['role'] == 1 ){
+    $deny = true;
+    echo("Uw heeft niet de rechten om dit te zien, over 5 seconden word u teruggestuurd naar uw dashboard.");
+    header("refresh:5;url=dashboard.php");
+}
+if($_SESSION['role'] == 2 ){
+    $deny = true;
+    echo("Uw heeft niet de rechten om dit te zien, over 5 seconden word u teruggestuurd naar uw dashboard.");
+    header("refresh:5;url=dashboard.php");
+}
+
 $user = (new User)->getUserById($_GET["user_id"]);
 if(isset($_POST['submit'])){
     $email = htmlspecialchars($_POST['email']);
@@ -13,32 +25,39 @@ if(isset($_POST['submit'])){
     }
 }
 
-?>
+if($deny == false){
 
-<table class="table table-striped table-responsive-md btn-table">
-    <thead>
-    <tr>
-        <th>#</th>
-        <th>Email adres</th>
-        <th>Voornaam</th>
-        <th>Achternaam</th>
-        <th>Update</th>
-    </tr>
-    </thead>
-    <tbody>
-    <form method="POST">
+?>
+<div class="container">
+    <a href="users.php"><button class="btn btn-warning goBack">Ga Terug</button><a>
+    <table class="table table-striped table-responsive-md btn-table">
+        <thead>
         <tr>
-        <th scope="row"><?= $user['user_id']?></th>
-        <td><input value="<?= $user['email']?>" name="email" type="text" ></td>
-        <td><input value="<?= $user['first_name']?>"name="firstname" type="text" ></td>
-        <td><input value="<?= $user['last_name']?>"name="lastname" type="text" ></td>
-       
-        <?php
-                echo '<td>';  
-                echo '<button name="submit" class="btn btn-success">Opslaan</button>';
-                echo '</td>';
-        ?>
-        </form>
+            <th>#</th>
+            <th>Email adres</th>
+            <th>Voornaam</th>
+            <th>Achternaam</th>
+            <th>Update</th>
         </tr>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+        <form method="POST">
+            <tr>
+            <th scope="row"><?= $user['user_id']?></th>
+            <td><input value="<?= $user['email']?>" name="email" type="text" ></td>
+            <td><input value="<?= $user['first_name']?>"name="firstname" type="text" ></td>
+            <td><input value="<?= $user['last_name']?>"name="lastname" type="text" ></td>
+            
+            <?php
+                    echo '<td>';  
+                    echo '<button name="submit" class="btn btn-success">Opslaan</button>';
+                    echo '</td>';
+            ?>
+            </form>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<?php
+} 
+?>
