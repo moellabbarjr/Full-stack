@@ -1,17 +1,12 @@
 <?php include("../Layout/Header.php"); 
 $login = (new User);
 
-  if(isset($_POST['submit'])){
-    $email = htmlspecialchars($_POST['email']);
-    $password = htmlspecialchars($_POST['password']);
-    $hashPass = password_hash($password, PASSWORD_DEFAULT);
-      
-    $login->login($email,$hashPass);
-
+if(isset($_POST['submit'])){
+  $email = htmlspecialchars($_POST['email']);
+  $password = htmlspecialchars($_POST['password']);
     
-    var_dump($_SESSION);
-  }
-
+  $login->login($email,$password);
+}
 ?>
 
 <p class="Hoofdtext">Login</p>

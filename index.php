@@ -6,23 +6,6 @@ require_once('Layout/Header.php');
 // }
 // include 'Classes/Calendar.php'; // autoloader ish broken :(
 
-$calendar = new Calendar();
-
-if (!isset($_SESSION["week_offset"])) {
-  $_SESSION["week_offset"] = 0;
-}
-
-if (isset($_POST["previous"])) {
-  $_SESSION["week_offset"]--;
-}
-
-if (isset($_POST["next"])) {
-  $_SESSION["week_offset"]++;
-}
-
-if (isset($_POST["reset"])) {
-  $_SESSION["week_offset"] = 0;
-}
 ?>
 
 <p class="Hoofdtext">Home</p>
@@ -58,8 +41,5 @@ if (isset($_POST["reset"])) {
       <?=$calendar->GetTasks()?>
     </div>
 
-    <div id="calendar-foot">
-      <button id="add" class="calendar-button"><i class="fas fa-plus"></i></button>
-    </div>
-  </div>
+
 <?php require_once('layout/Footer.php') ?>
