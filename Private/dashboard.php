@@ -5,6 +5,7 @@
 }
 $calendar = new Calendar();
 $offset = 0;
+$deny = false;
 
 if (isset($_GET["week_offset"])) {
     $offset = htmlspecialchars($_GET["week_offset"]);
@@ -23,6 +24,14 @@ if (isset($_GET["reset"])) {
 }
 
 $name = $_SESSION['name'];
+
+if(!$_SESSION['name']){
+  $deny = true;
+  echo("Er is iets fout gegaan met het inloggen, probeer het opnieuw. U word over 5 seconden terug gestuurd.");
+  header("refresh:6;url=login.php");
+}
+
+if($deny == false){
 
 ?>
 
@@ -67,5 +76,7 @@ $name = $_SESSION['name'];
       <button id="add" class="calendar-button"><i class="fas fa-plus"></i></button>
     </div>
   </div>
-
+  <?php
+} 
+?>
  

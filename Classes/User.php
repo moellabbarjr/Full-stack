@@ -101,13 +101,13 @@ class User
         exit;
     }
 
-    public function getUser($search) {
+    public function searchUser($search) {
         try{
             $conn = (new DB)->connect();
 
-            $stmt = $conn->query("SELECT * FROM user WHERE user_id LIKE '%" + $search + "%' OR email LIKE '%" + $search + "%' OR first_name LIKE '%" + $search + "%' OR last_namename LIKE '%" + $search + "%'");
+            $stmt = $conn->query("SELECT * FROM user WHERE email LIKE '%$search%' OR first_name LIKE '%$search%' OR last_name LIKE '%$search%'");
 
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $result = $stmt->fetchAll();
             $connection = null;
 
             return $result;

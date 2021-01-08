@@ -25,7 +25,9 @@ spl_autoload_register(function ($class) {
     <a href="../index.php" class="vvzaIcon">
       <image class="vvzaIcon" src="../Style/igootje.png"></image>
     </a>
-    <p class="navTitle">VVZA Portaal</p>
+    <a href="../index.php" class="redLogo">
+      <p class="navTitle">VVZA Portaal</p>
+    </a>
     </div>
     <div class="rechts">
     <ul>
