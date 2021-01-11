@@ -34,7 +34,7 @@ spl_autoload_register(function ($class) {
           <a class="active" href="../Private/login.php">Login</a>  
           <?php } ?>
         <?php if (isset($_SESSION["sessionid"])) { ?>
-          <li><a href="../Private/logout.php">logout</a></li>
+          <a class="active" href="../Private/logout.php">logout</a>
         <?php } ?>
       </li>
     </ul>
