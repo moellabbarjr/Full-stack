@@ -13,7 +13,7 @@ class User
             if (count($result) == 0) {
                 $hash = password_hash($password, PASSWORD_DEFAULT);
                 $stmt = $conn->prepare("INSERT INTO user (email, first_name, last_name, `password`) VALUES (?,?,?,?)");
-                $stmt->execute([$email, $firstname, $lastname, $password]);
+                $stmt->execute([$email, $firstname, $lastname, $hash]);
             } else {
                 return "false";
             } 

@@ -24,6 +24,18 @@ if (isset($_GET["next"])) {
 if (isset($_GET["reset"])) {
     $offset = 0;
 }
+
+if(isset($_POST['toevoegen'])){
+    $startTime = htmlspecialchars($_POST['startTime']);
+    $endTime = htmlspecialchars($_POST['endTime']);
+    $date = htmlspecialchars($_POST['date']);
+    $job = htmlspecialchars($_POST['job_choise']);
+    $volunteer = htmlspecialchars($_POST['volunteer']);
+
+    $user = (new add_job);
+
+    $user->add_newjob($startTime, $endTime, $date, $job, $volunteer);
+}
 ?>
 
 <div id="modal">
@@ -34,11 +46,39 @@ if (isset($_GET["reset"])) {
     </div>
 
     <div id="modal-body">
-      break elements go <br><br><br><br><br><br> xd
-        <div class="input-group">
-            <label for="loginEmail">E-mailadres:</label>
-            <input id="loginEmail" type="email" placeholder="E-mailadres" name="email" required>
-        </div>
+        <form action="" method="POST">
+            <div class="input-group">
+                <label for="loginEmail">Begin tijd:</label>
+                <input id="loginEmail" type="time" name="startTime" required>
+            </div>
+            <div class="input-group">
+                <label for="loginEmail">Eind tijd:</label>
+                <input id="loginEmail" type="time" name="endTime" required>
+            </div>
+            <div class="input-group">
+                <label for="loginEmail">Datum:</label>
+                <input id="loginEmail" type="date" name="date" required>
+            </div>
+            <div class="input-group">
+                <label for="loginEmail">Wat voor dienst:</label>
+                <select name="job_choise" id="cars">
+                    <?php foreach(add_job::different_jobs() as $jobs) { ?>
+                        <option value="<?=$jobs[0]?>"><?=$jobs[1]?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="loginEmail">Wie doet deze dienst:</label>
+                <select name="volunteer" id="cars">
+                    <?php foreach(add_job::volunteer() as $volunteer) { ?>
+                        <option value="<?=$volunteer[0]?>"><?=$volunteer[2]?> <?=$volunteer[3]?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            <div class="button-container">
+                <button type="submit" name="toevoegen" class="btn">done</button>
+            </div>
+        </form>
     </div>
   </div>
 </div>
