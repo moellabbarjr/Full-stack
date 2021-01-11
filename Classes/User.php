@@ -4,14 +4,19 @@ class User
 {
     public function register($email,$firstname,$lastname,$password) {
         try{
-            $conn = (new DB)->connect();
+            $conn = DB::connect();
 
-            $stmt = $conn->prepare("INSERT INTO user (email, first_name, last_name, `password`) VALUES (?,?,?,?)");
-            
-            $stmt->execute([$email, $firstname, $lastname, $password]);
-            $result = $stmt->fetch();
-            $connection = null;
-            return $result;
+            $stmt= $conn->prepare("SELECT * FROM `user` WHERE email = ?");
+            $stmt->execute([$email]);
+            $result = $stmt->fetchAll();
+
+            if (count($result) == 0) {
+                $hash = password_hash($password, PASSWORD_DEFAULT);
+                $stmt = $conn->prepare("INSERT INTO user (email, first_name, last_name, `password`) VALUES (?,?,?,?)");
+                $stmt->execute([$email, $firstname, $lastname, $password]);
+            } else {
+                return "false";
+            } 
         
         }
         catch(PDOexception $e){
