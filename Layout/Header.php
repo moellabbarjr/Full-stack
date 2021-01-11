@@ -30,18 +30,12 @@ spl_autoload_register(function ($class) {
     <ul>
       <li>
         <a class="active" href="../index.php">Home</a>
-        <?php if (!isset($_SESSION["sessionid"])) {
-    ?>
-          <a class="active" href="../Private/login.php">Login</a>
-
-        <?php
-} ?>
-        <?php if (isset($_SESSION["sessionid"])) {
-        ?>
-          <li><a href="../logout.php">logout</a></li>
-        <?php
-    } ?>
-
+        <?php if (!isset($_SESSION["sessionid"])) { ?>
+          <a class="active" href="../Private/login.php">Login</a>  
+          <?php } ?>
+        <?php if (isset($_SESSION["sessionid"])) { ?>
+          <li><a href="../Private/logout.php">logout</a></li>
+        <?php } ?>
       </li>
     </ul>
     </div>

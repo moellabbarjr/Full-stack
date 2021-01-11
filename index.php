@@ -35,6 +35,10 @@ if (isset($_GET["reset"])) {
 
     <div id="modal-body">
       break elements go <br><br><br><br><br><br> xd
+        <div class="input-group">
+            <label for="loginEmail">E-mailadres:</label>
+            <input id="loginEmail" type="email" placeholder="E-mailadres" name="email" required>
+        </div>
     </div>
   </div>
 </div>
@@ -57,9 +61,11 @@ if (isset($_GET["reset"])) {
     <div id="calendar-body">
       <?=$calendar->GetTasks($offset)?>
     </div>
-
-    <div id="calendar-foot">
-      <button id="add" class="calendar-button"><i class="fas fa-plus"></i></button>
-    </div>
+    <?php if (isset($_SESSION["role"]) == "2") { ?>
+        <div id="calendar-foot">
+        <button id="add" class="calendar-button"><i class="fas fa-plus"></i></button>
+    <?php } ?>
+  </div>
+    
   </div>
 <?php require_once('layout/Footer.php') ?>

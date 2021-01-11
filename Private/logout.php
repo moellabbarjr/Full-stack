@@ -2,5 +2,6 @@
 session_start();
     unset($_SESSION["sessionid"]);
     unset($_SESSION["loggedin"]);
-    header("location: index.php");
+    unset($_SESSION["role"]);
+    header("location: ../index.php");
     die();
