@@ -37,6 +37,7 @@
 
 .goBack {
     margin: 0.4rem;
+    float:right;
 }
 
 .btn {
@@ -106,4 +107,10 @@ th {
 }
 .table-striped tbody tr:nth-of-type(odd) {
     background-color: rgba(0,0,0,.05);
+}
+.roles{
+    width: 100%;
+}
+.role{
+    padding-top: 5px;
 }
