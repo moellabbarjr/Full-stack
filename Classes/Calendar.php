@@ -17,15 +17,15 @@ class Calendar
         $week = intval(date("W", strtotime("{$offset} week")));
 
         $conn = (new DB)->connect();
-        $sql = "SELECT `a`.`id`, `u`.`first_name`, `u`.`last_name`, `a`.`created_at`, `j`.`job_title`,`j`.`job_desc`
+        $sql = "SELECT `a`.`id`, `u`.`first_name`, `u`.`last_name`, `a`.`date`, `j`.`job_title`,`j`.`job_desc`, `a`.`startTime`, `a`.`endTime`
                 FROM `agenda` a
                 LEFT JOIN `job` j ON `a`.`job_id` = `j`.`job_id`
                 LEFT JOIN `user` u ON `a`.`user_id` = `u`.`user_id`
-                WHERE WEEK(`a`.`created_at`, 3) = ?
-                ORDER BY `a`.`created_at` ASC";
+                WHERE WEEK(`a`.`date`, 3) = ? AND `u`.`user_id` = ?
+                ORDER BY `a`.`date` AND `a`.`startTime` ASC";
 
         $stmt= $conn->prepare($sql);
-        $stmt->execute([$week]);
+        $stmt->execute([$week, $_SESSION["loggedin"]]);
 
 
 
@@ -36,8 +36,10 @@ class Calendar
                 $id = $row["id"];
                 $first_name = $row["first_name"];
                 $last_name = $row["last_name"];
-                // $date = date("l j F", strtotime($row["created_at"]));
-                $date = strftime("%A %e %B", strtotime($row["created_at"]));
+                $startTime = $row["startTime"];
+                $endTime = $row["endTime"];
+                // $date = date("l j F", strtotime($row["date"]));
+                $date = strftime("%A %e %B", strtotime($row["date"]));
                 $job = $row["job_title"];
                 $description = $row["job_desc"];
 
@@ -47,6 +49,7 @@ class Calendar
                     <div class="item-head">
                         <div class="item-name">$first_name $last_name</div>
                         <div class="item-date">$date</div>
+                        <div>Van $startTime tot $endTime</div>
                     </div>
 
                     <div class="item-body">

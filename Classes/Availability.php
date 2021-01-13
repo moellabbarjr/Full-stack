@@ -8,13 +8,13 @@
 
 class Availability
 {
-    public function add($monday,$tuesday,$wednesday,$thursday,$friday,$saturday,$sunday) {
+    public function add($monday,$tuesday,$wednesday,$thursday,$friday,$saturday,$sunday,$job_preference) {
         try{
             $conn = (new DB)->connect();
-            $userid = 2;
-            $stmt = $conn->prepare("INSERT INTO availability (monday, tuesday, wednesday, thursday, friday, saturday, sunday, user_id) VALUES (?,?,?,?,?,?,?,?)");
 
-            $stmt->execute([$monday,$tuesday,$wednesday,$thursday,$friday,$saturday,$sunday,$userid]);
+            $stmt = $conn->prepare("INSERT INTO availability (monday, tuesday, wednesday, thursday, friday, saturday, sunday, job_preference, user_id) VALUES (?,?,?,?,?,?,?,?,?)");
+
+            $stmt->execute([$monday,$tuesday,$wednesday,$thursday,$friday,$saturday,$sunday,$job_preference,$_SESSION["loggedin"]]);
             $connection = null;
 
 

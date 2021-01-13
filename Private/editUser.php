@@ -16,6 +16,8 @@ switch($_SESSION['role']){
 }
 
 $user = (new User)->getUserById($_GET["user_id"]);
+$jobs = (new User)->getJobs();
+$roles = (new User)->getRoles();
 if(isset($_POST['submit'])){
     $email = htmlspecialchars($_POST['email']);
     $firstname = htmlspecialchars($_POST['firstname']);
@@ -32,7 +34,14 @@ if($deny == false){
 
 ?>
 <div class="container">
-    <a href="users.php"><button class="btn btn-warning goBack">Ga Terug</button><a>
+    <div class="roles">
+        <p class="role">Rollen:
+            1: Gebruiker,
+            2: Coördinator,
+            3: Beheerder
+            <a href="users.php"><button class="btn btn-warning goBack">Ga Terug</button><a>
+        </p>
+    </div>
     <table class="table table-striped table-responsive-md btn-table">
         <thead>
         <tr>
@@ -40,6 +49,8 @@ if($deny == false){
             <th>Email adres</th>
             <th>Voornaam</th>
             <th>Achternaam</th>
+            <th>Coördinator?</th>
+            <th>Rol</th>
             <th>Update</th>
         </tr>
         </thead>
@@ -50,6 +61,36 @@ if($deny == false){
             <td><input value="<?= $user['email']?>" name="email" type="text" ></td>
             <td><input value="<?= $user['first_name']?>"name="firstname" type="text" ></td>
             <td><input value="<?= $user['last_name']?>"name="lastname" type="text" ></td>
+            <td>
+                <select>
+                <?php
+                    foreach($jobs as $job){
+                        
+                ?>
+                    <option><?=$job['job_title']?></option>
+                <?php
+                    }
+                ?>
+                </select>
+            </td>
+            <td>
+            <select>
+            <option id="currentrole"><?=$user['role']?></option>
+                <?php
+                    foreach($roles as $role){
+                        if($user['role'] == $role['role_id']){
+                            
+                        }
+                        
+                ?>  
+                    
+                    <option id="<?=$role['role_id']?>"><?=$role['role_id']?></option>
+                <?php
+                    }
+                ?>
+                </select>
+            </td>
+
             
             <?php
                     echo '<td>';  
