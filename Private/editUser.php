@@ -75,10 +75,15 @@ if($deny == false){
             </td>
             <td>
             <select>
+            <option id="currentrole"><?=$user['role']?></option>
                 <?php
                     foreach($roles as $role){
+                        if($user['role'] == $role['role_id']){
+                            
+                        }
                         
-                ?>
+                ?>  
+                    
                     <option id="<?=$role['role_id']?>"><?=$role['role_id']?></option>
                 <?php
                     }
