@@ -44,12 +44,14 @@ spl_autoload_register(function ($class) {
             if($_SERVER['REQUEST_URI'] == "/index.php"){
               ?>
             <li><a href="Private/logout.php">Log uit</a></li>
-        <?php
 
+        <?php
+                
             }else{
 
         ?>
           <li><a href="logout.php">Log uit</a></li>
+            <li><a href="registration_form.php">Beschikbaarheid</a></li>
           <?php }
           ?>
         <?php
