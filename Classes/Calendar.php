@@ -21,11 +21,11 @@ class Calendar
                 FROM `agenda` a
                 LEFT JOIN `job` j ON `a`.`job_id` = `j`.`job_id`
                 LEFT JOIN `user` u ON `a`.`user_id` = `u`.`user_id`
-                WHERE WEEK(`a`.`date`, 3) = ?
-                ORDER BY `a`.`date` ASC";
+                WHERE WEEK(`a`.`date`, 3) = ? AND `u`.`user_id` = ?
+                ORDER BY `a`.`date` AND `a`.`startTime` ASC";
 
         $stmt= $conn->prepare($sql);
-        $stmt->execute([$week]);
+        $stmt->execute([$week, $_SESSION["loggedin"]]);
 
 
 

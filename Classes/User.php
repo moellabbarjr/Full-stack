@@ -122,6 +122,52 @@ class User
         }
         exit;
     }
+    public function getJobs() {
+        try{
+            $conn = (new DB)->connect();
+
+            $stmt = $conn->prepare("SELECT * FROM job");
+            $stmt->execute();
+
+            
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $connection = null;
+
+            return $result;
+        }
+        catch(PDOException $e) {
+            echo json_encode([ 
+                'error' => $e->getMessage(),
+
+            ]);
+
+            print "Error!: " . $e->getMessage() . "<br/>";
+        }
+        exit;
+    }
+
+    public function getRoles(){
+        try{
+            $conn = (new DB)->connect();
+
+            $stmt = $conn->prepare("SELECT * FROM `role`");
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $connection = null;
+            
+            return $result;
+        }
+        catch(PDOException $e) {
+            echo json_encode([ 
+                'error' => $e->getMessage(),
+
+            ]);
+
+            print "Error!: " . $e->getMessage() . "<br/>";
+        }
+        exit;
+    }
 
     public function updateUser($id, $firstName, $lastName, $email) {
         try{
