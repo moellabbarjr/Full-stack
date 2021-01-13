@@ -108,4 +108,7 @@ if(isset($_POST['toevoegen'])){
   </div>
     
   </div>
+?>
+
+
 <?php require_once('layout/Footer.php') ?>
