@@ -46,7 +46,11 @@ if(isset($_POST['toevoegen'])){
 
 // verwijderen van een vrijwilliger uit het rooster
 if (isset($_POST['verwijderen'])) {
-    
+    $id = htmlspecialchars($_POST['inputid']);
+
+    $user = (new add_job);
+
+    $user->delete_job($id);
 }
 
 if($deny == false){
@@ -122,7 +126,7 @@ if($deny == false){
       <?=$calendar->GetTasks($offset)?>
     </div>
 
-        <?php if (!isset($_SESSION["role"]) == "2") { ?>
+        <?php if (isset($_SESSION["role"]) == "2") { ?>
             <div id="calendar-foot">
                 <button id="add" class="calendar-button"><i class="fas fa-plus"></i></button>
             </div>
