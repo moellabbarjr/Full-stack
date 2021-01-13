@@ -23,9 +23,6 @@ if(isset($_POST['availability'])){
     $sunday = htmlspecialchars($_POST['sundayBeginTime']) . "," . htmlspecialchars($_POST['sundayEndTime']);
     $job_preference = htmlspecialchars($_POST['job_p']);
     $availability->add($monday,$tuesday,$wednesday,$thursday,$friday,$saturday,$sunday,$job_preference);
-
-
-
 }
 //var_dump($job->getJob());
 
