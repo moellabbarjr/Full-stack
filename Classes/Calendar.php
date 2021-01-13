@@ -16,18 +16,38 @@ class Calendar
 
         $week = intval(date("W", strtotime("{$offset} week")));
 
-        $conn = (new DB)->connect();
-        $sql = "SELECT `a`.`id`, `u`.`first_name`, `u`.`last_name`, `a`.`date`, `j`.`job_title`,`j`.`job_desc`, `a`.`startTime`, `a`.`endTime`
-                FROM `agenda` a
-                LEFT JOIN `job` j ON `a`.`job_id` = `j`.`job_id`
-                LEFT JOIN `user` u ON `a`.`user_id` = `u`.`user_id`
-                WHERE WEEK(`a`.`date`, 3) = ? AND `u`.`user_id` = ?
-                ORDER BY `a`.`date` AND `a`.`startTime` ASC";
+        $stmt = null;
+        $div_hidden = null;
 
-        $stmt= $conn->prepare($sql);
-        $stmt->execute([$week, $_SESSION["loggedin"]]);
+        if ($_SESSION["role"] == 1) {
+            $check = $_SESSION["loggedin"];
+            $sql = "SELECT `a`.`id`, `u`.`first_name`, `u`.`last_name`, `a`.`date`, `j`.`job_title`,`j`.`job_desc`, `a`.`startTime`, `a`.`endTime`
+            FROM `agenda` a
+            LEFT JOIN `job` j ON `a`.`job_id` = `j`.`job_id`
+            LEFT JOIN `user` u ON `a`.`user_id` = `u`.`user_id`
+            WHERE WEEK(`a`.`date`, 3) = ? AND `u`.`user_id` = ?
+            ORDER BY `a`.`date` AND `a`.`startTime` ASC";
 
+            $conn = (new DB)->connect();
+            $stmt= $conn->prepare($sql);
+            $stmt->execute([$week, $check]);
+            $div_hidden = "hidden";
+        }
+        else if ($_SESSION["role"] == 2 || 3) {
+            $check = $_SESSION["loggedin"];
+            $sql = "SELECT `a`.`id`, `u`.`first_name`, `u`.`last_name`, `a`.`date`, `j`.`job_title`,`j`.`job_desc`, `a`.`startTime`, `a`.`endTime`
+            FROM `agenda` a
+            LEFT JOIN `job` j ON `a`.`job_id` = `j`.`job_id`
+            LEFT JOIN `user` u ON `a`.`user_id` = `u`.`user_id`
+            WHERE WEEK(`a`.`date`, 3) = ?
+            ORDER BY `a`.`date` AND `a`.`startTime` ASC";
 
+            $conn = (new DB)->connect();
+            $stmt= $conn->prepare($sql);
+            $stmt->execute([$week]);
+        }
+
+        
 
         if ($stmt->rowCount() > 0) {
             $result = $stmt->fetchAll();
@@ -45,24 +65,26 @@ class Calendar
 
 
                 $html .= <<<HTML
-                <div class="calendar-item">
-                    <div class="item-head">
-                        <div class="item-name">$first_name $last_name</div>
-                        <div class="item-date">$date</div>
-                        <div>Van $startTime tot $endTime</div>
-                    </div>
 
-                    <div class="item-body">
-                        $description
-                    </div>
+                <form action="" method="POST">
+                    <div class="calendar-item">
+                        <div class="item-head">
+                            <div class="item-name">$first_name $last_name</div>
+                            <div class="item-date">$date</div>
+                            <div>Van $startTime tot $endTime</div>
+                        </div>
 
-                    <div class="item-foot">
-                        <div>
-                            <label for="done$id">Gedaan:</label>
-                            <input type="checkbox" name="done$id" id="done$id" value="$id">
+                        <div class="item-body">
+                            $description
+                        </div>
+                        <div class="item-foot" >
+                            <div>
+                                <input value="$id" type="hidden" name="inputid">
+                                <button type="submit" name="verwijderen" class="" style="visibility:$div_hidden;">verwijder</button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
 HTML;
             }
         } else {

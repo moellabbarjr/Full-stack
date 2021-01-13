@@ -24,18 +24,6 @@ if (isset($_GET["next"])) {
 if (isset($_GET["reset"])) {
     $offset = 0;
 }
-
-if(isset($_POST['toevoegen'])){
-    $startTime = htmlspecialchars($_POST['startTime']);
-    $endTime = htmlspecialchars($_POST['endTime']);
-    $date = htmlspecialchars($_POST['date']);
-    $job = htmlspecialchars($_POST['job_choise']);
-    $volunteer = htmlspecialchars($_POST['volunteer']);
-
-    $user = (new add_job);
-
-    $user->add_newjob($startTime, $endTime, $date, $job, $volunteer);
-}
 ?>
 
 <div>

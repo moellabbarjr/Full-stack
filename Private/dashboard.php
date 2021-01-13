@@ -31,6 +31,24 @@ if(!$_SESSION['name']){
   header("refresh:6;url=login.php");
 }
 
+// toevoegen van een vrijwilliger voor in het rooster
+if(isset($_POST['toevoegen'])){
+    $startTime = htmlspecialchars($_POST['startTime']);
+    $endTime = htmlspecialchars($_POST['endTime']);
+    $date = htmlspecialchars($_POST['date']);
+    $job = htmlspecialchars($_POST['job_choise']);
+    $volunteer = htmlspecialchars($_POST['volunteer']);
+
+    $user = (new add_job);
+
+    $user->add_newjob($startTime, $endTime, $date, $job, $volunteer);
+}
+
+// verwijderen van een vrijwilliger uit het rooster
+if (isset($_POST['verwijderen'])) {
+    
+}
+
 if($deny == false){
 
 ?>
@@ -50,6 +68,14 @@ if($deny == false){
     <div id="modal-body">
         <form action="" method="POST">
             <div class="input-group">
+                <label for="loginEmail">Wie doet deze dienst:</label>
+                <select name="volunteer" id="cars">
+                    <?php foreach(add_job::volunteer() as $volunteer) { ?>
+                        <option value="<?=$volunteer[0]?>"><?=$volunteer[2]?> <?=$volunteer[3]?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            <div class="input-group">
                 <label for="loginEmail">Begin tijd:</label>
                 <input id="loginEmail" type="time" name="startTime" required>
             </div>
@@ -61,19 +87,12 @@ if($deny == false){
                 <label for="loginEmail">Datum:</label>
                 <input id="loginEmail" type="date" name="date" required>
             </div>
+            <!-- kan uiteindelijk weg -->
             <div class="input-group">
                 <label for="loginEmail">Wat voor dienst:</label>
                 <select name="job_choise" id="cars">
                     <?php foreach(add_job::different_jobs() as $jobs) { ?>
                         <option value="<?=$jobs[0]?>"><?=$jobs[1]?></option>
-                    <?php } ?>
-                </select>
-            </div>
-            <div class="input-group">
-                <label for="loginEmail">Wie doet deze dienst:</label>
-                <select name="volunteer" id="cars">
-                    <?php foreach(add_job::volunteer() as $volunteer) { ?>
-                        <option value="<?=$volunteer[0]?>"><?=$volunteer[2]?> <?=$volunteer[3]?></option>
                     <?php } ?>
                 </select>
             </div>
@@ -85,8 +104,7 @@ if($deny == false){
   </div>
 </div>
 
-  <div id="calendar">
-  
+  <div id="calendar"> 
     <form action="" method="GET">
       <input name="week_offset" type="hidden" value=<?=$offset?>>
       <div id="calendar-head">
@@ -104,11 +122,11 @@ if($deny == false){
       <?=$calendar->GetTasks($offset)?>
     </div>
 
-        <?php if (isset($_SESSION["role"]) == "2") { ?>
-        <div id="calendar-foot">
-            <button id="add" class="calendar-button"><i class="fas fa-plus"></i></button>
+        <?php if (!isset($_SESSION["role"]) == "2") { ?>
+            <div id="calendar-foot">
+                <button id="add" class="calendar-button"><i class="fas fa-plus"></i></button>
+            </div>
         <?php } ?>
-        </div>
   </div>
   <?php
 } 

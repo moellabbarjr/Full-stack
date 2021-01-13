@@ -22,10 +22,10 @@ spl_autoload_register(function ($class) {
 <body>
   <nav>
     <div class="links">
-    <a href="../index.php" class="vvzaIcon">
+    <a href="../Private/dashboard.php" class="vvzaIcon">
       <image class="vvzaIcon" src="../Style/igootje.png"></image>
     </a>
-    <a href="../index.php" class="redLogo">
+    <a href="../Private/dashboard.php" class="redLogo">
       <p class="navTitle">VVZA Portaal</p>
     </a>
     </div>
