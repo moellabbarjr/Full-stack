@@ -1,5 +1,8 @@
 <?php
 session_start();
-session_destroy();
-header("location:login.php");
-die();
+    unset($_SESSION["sessionid"]);
+    unset($_SESSION["loggedin"]);
+    unset($_SESSION["role"]);
+    unset($_SESSION["name"]);
+    header("location: ../index.php");
+    die();

@@ -17,8 +17,3 @@ switch($_SESSION['role']){
         header("location:users.php");
 
 }
-
-
-
-
-

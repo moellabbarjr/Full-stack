@@ -9,8 +9,7 @@ if(isset($_POST['register'])){
     $firstname = htmlspecialchars($_POST['firstname']);
     $lastname = htmlspecialchars($_POST['lastname']);
     if($password == $passwordRepeat){
-        $hashPass = password_hash($password, PASSWORD_DEFAULT);
-        $user->register($email,$firstname,$lastname,$hashPass);
+        $user->register($email,$firstname,$lastname,$password);
         return true;
     }else{
         return false;

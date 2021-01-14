@@ -48,7 +48,39 @@ if($deny == false){
     </div>
 
     <div id="modal-body">
-      break elements go <br><br><br><br><br><br> xd
+        <form action="" method="POST">
+            <div class="input-group">
+                <label for="loginEmail">Begin tijd:</label>
+                <input id="loginEmail" type="time" name="startTime" required>
+            </div>
+            <div class="input-group">
+                <label for="loginEmail">Eind tijd:</label>
+                <input id="loginEmail" type="time" name="endTime" required>
+            </div>
+            <div class="input-group">
+                <label for="loginEmail">Datum:</label>
+                <input id="loginEmail" type="date" name="date" required>
+            </div>
+            <div class="input-group">
+                <label for="loginEmail">Wat voor dienst:</label>
+                <select name="job_choise" id="cars">
+                    <?php foreach(add_job::different_jobs() as $jobs) { ?>
+                        <option value="<?=$jobs[0]?>"><?=$jobs[1]?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="loginEmail">Wie doet deze dienst:</label>
+                <select name="volunteer" id="cars">
+                    <?php foreach(add_job::volunteer() as $volunteer) { ?>
+                        <option value="<?=$volunteer[0]?>"><?=$volunteer[2]?> <?=$volunteer[3]?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            <div class="button-container">
+                <button type="submit" name="toevoegen" class="btn">done</button>
+            </div>
+        </form>
     </div>
   </div>
 </div>
@@ -72,11 +104,14 @@ if($deny == false){
       <?=$calendar->GetTasks($offset)?>
     </div>
 
-    <div id="calendar-foot">
-      <button id="add" class="calendar-button"><i class="fas fa-plus"></i></button>
-    </div>
+        <?php if (isset($_SESSION["role"]) == "2") { ?>
+        <div id="calendar-foot">
+            <button id="add" class="calendar-button"><i class="fas fa-plus"></i></button>
+        <?php } ?>
+        </div>
   </div>
   <?php
 } 
 ?>
  
+<?php require_once('../layout/Footer.php') ?>

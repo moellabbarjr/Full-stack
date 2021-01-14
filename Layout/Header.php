@@ -39,34 +39,24 @@ spl_autoload_register(function ($class) {
       
     <ul>
       <li>
-
-
-        <a class="active" href="../index.php">Home</a>
-        <?php if (!isset($_SESSION["sessionid"])) {
-    ?>
+        
+        <?php if (!isset($_SESSION["sessionid"])) { ?>
           <a class="active" href="../Private/login.php">Login</a>
-
-        <?php
-} ?>
+        <?php } ?>
         <?php if (isset($_SESSION["sessionid"])) {
-          
-            if($_SERVER['REQUEST_URI'] == "/index.php"){
-              ?>
-            <li><a href="Private/logout.php">Log uit</a></li>
-
+            if($_SERVER['REQUEST_URI'] == "/index.php"){ ?>
+            <a href="Private/dashboard.php">Home</a>
+            <a href="Private/registration_form.php">Beschikbaarheid</a>
+            <a href="Private/logout.php">Log uit</a>
         <?php
-                
             }else{
-
         ?>
-          <li><a href="logout.php">Log uit</a></li>
-            <li><a href="registration_form.php">Beschikbaarheid</a></li>
+            <a href="dashboard.php">Home</a>
+            <a href="registration_form.php">Beschikbaarheid</a>
+            <a href="logout.php">Log uit</a>
           <?php }
+          }
           ?>
-        <?php
-    } ?>
-
-
       </li>
     </ul>
     </div>
