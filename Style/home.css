@@ -125,3 +125,47 @@
 #calendar-foot {
     background-color: #FCFCFC;
 }
+
+.con_banner{
+    width: 100%;
+    position: relative;
+    text-align: center;
+    color: black;
+}
+
+.banner_home{
+    width: 90%;
+    height: 25rem;
+    border-radius: 20px;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+   
+}
+
+.welkom_text{
+    font-size: 25px;
+    position: absolute;
+    bottom: 8px;
+    left: 15rem;
+}
+
+.grid-container {
+    width: 100%;
+    margin-top: 5rem;
+    padding-left: 7rem;
+   
+}
+
+.grid-item {
+    width: 40%;
+    text-align: left;
+}
+.grid-item b{
+    text-align: center;
+    font-size: 25px;
+}
+
+.foto_home{
+    height:10rem;
+    width: 15rem;
+}

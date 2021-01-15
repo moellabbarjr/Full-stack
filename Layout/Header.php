@@ -18,6 +18,7 @@ spl_autoload_register(function ($class) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://kit.fontawesome.com/f1e6762606.js" crossorigin="anonymous"></script>
+  <script src="Javascript/script.js" type="text/javascript"></script>
   <link rel="stylesheet" href="../Style/Main.css">
   <title>VVZA Portaal</title>
 
@@ -41,7 +42,8 @@ spl_autoload_register(function ($class) {
       <li>
         
         <?php if (!isset($_SESSION["sessionid"])) { ?>
-          <a class="active" href="../Private/login.php">Login</a>
+          <a href="../index.php">Home</a>
+          <a href="../Private/login.php">Login</a>
         <?php } ?>
         <?php if (isset($_SESSION["sessionid"])) {
             if($_SERVER['REQUEST_URI'] == "/index.php"){ ?>
