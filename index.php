@@ -50,12 +50,11 @@ if(isset($_POST['toevoegen'])){
     <div class="grid-item">
       <p>
         <b>VVZA Portaal</b>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-        Culpa tenetur doloremque magnam commodi quo, fuga natus delectus necessitatibus iusto nemo nostrum officia sed sint, illo blanditiis dicta praesentium assumenda consequatur!</p>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. <br>
+        Culpa tenetur doloremque magnam commodi quo, fuga natus delectus necessitatibus iusto nemo nostrum officia sed sint, 
+        illo blanditiis dicta praesentium assumenda consequatur!</p>
       </p>
     </div>
   </div>
 </div>
-
-
 <?php require_once('layout/Footer.php') ?>
