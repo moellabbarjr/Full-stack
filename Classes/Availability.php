@@ -47,7 +47,7 @@ class Availability
             $result = $stmt->fetchAll();
             return $result;
         }
-        catch(PDOxception $e){
+        catch(PDOexception $e){
             return json_encode([
                 'error' => $e->getMessage(),
             ]);
