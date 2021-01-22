@@ -17,6 +17,7 @@ spl_autoload_register(function ($class) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://kit.fontawesome.com/f1e6762606.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../Style/Main.css">
+
   <title>VVZA Portaal</title>
 </head>
 <body>

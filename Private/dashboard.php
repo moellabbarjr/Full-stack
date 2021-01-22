@@ -7,11 +7,9 @@ $calendar = new Calendar();
 $offset = 0;
 $deny = false;
 
-//$View = (new View());
-//availability ophalen
-$pdo = new PDO("mysql:host=127.0.0.1;dbname=vvza_database","root","");
-$query = "SELECT * FROM availability a INNER JOIN user u ON a.user_id=u.user_id;";
-$d = $pdo->query($query);
+//availability ophalen.
+$availability = (new Availability());
+$datas = $availability->Fetch();
 
 if (isset($_GET["week_offset"])) {
     $offset = htmlspecialchars($_GET["week_offset"]);
@@ -46,29 +44,42 @@ if($deny == false){
     <b>Hierbij wordt de aanwezigheid getoond van de vrijwilligers</b>
     <br>
 <table border="" cellpadding="" cellspacing="" align="center">
-    <tr>
-        <th>Maandag</th>
-        <th>Dinsdag</th>
-        <th>Woensdag</th>
-        <th>Donderdag</th>
-        <th>Vrijdag</th>
-        <th>Naam</th>
-        <th>Achternaam</th>
-    </tr>
-    <?php foreach ($d as $data) { ?>
+
+    <table class="table">
+        <thead>
         <tr>
+            <th scope="col">Maandag</th>
+            <th scope="col">Dinsdag</th>
+            <th scope="col">Woensdag</th>
+            <th scope="col">Donderdag</th>
+            <th scope="col">Vrijdag</th>
+            <th scope="col">Zaterdag</th>
+            <th scope="col">Zondag</th>
+            <th scope="col">Naam</th>
+            <th scope="col">Achternaam</th>
+        </tr>
+        </thead>
+        <tbody>
+    <?php foreach ($datas as $data) { ?>
+        <tr>
+
             <td><?php echo $data['monday']; ?></td>
             <td><?php echo $data['tuesday']; ?></td>
             <td><?php echo $data['wednesday']; ?></td>
             <td><?php echo $data['thursday']; ?></td>
             <td><?php echo $data['friday']; ?></td>
+            <td><?php echo $data['saturday']; ?></td>
+            <td><?php echo $data['sunday']; ?></td>
             <td><?php echo $data['first_name']; ?></td>
             <td><?php echo $data['last_name']; ?></td>
         </tr>
- <?php   }
-?>
+    <?php   }
+    ?>
+        </tbody>
+    </table>
 </table>
 </div>
+    </html>
 <div id="modal">
   <div id="modal-content">
     <div id="modal-head">
@@ -139,6 +150,7 @@ if($deny == false){
         <?php } ?>
         </div>
   </div>
+
   <?php
 } 
 ?>
