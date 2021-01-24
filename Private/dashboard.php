@@ -120,19 +120,18 @@ if($deny == false){
         </div>
 
         <button type="submit" name="next" class="calendar-arrow"><i class="fas fa-arrow-right"></i></button>
-      </div>
+        </div>
     </form>
     <div id="calendar-body">
-      <?=$calendar->GetTasks($offset)?>
+        <?=$calendar->GetTasks($offset)?>
     </div>
-
         <?php if (isset($_SESSION["role"]) == "2") { ?>
             <div id="calendar-foot">
                 <button id="add" class="calendar-button"><i class="fas fa-plus"></i></button>
             </div>
         <?php } ?>
-  </div>
-  <?php
+    </div>
+<?php
 } 
 ?>
  

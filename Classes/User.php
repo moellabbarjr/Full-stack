@@ -45,6 +45,7 @@ class User
                     $_SESSION["sessionid"] = session_id();
                     $_SESSION["loggedin"] = $result[0][0];
                     $_SESSION["role"] = $result[0][5];
+                    $_SESSION["job_role"] = $result[0][6];
                     $_SESSION['name'] = $result[0][2];
                     header("Location: dashboard.php");
                 }
