@@ -15,6 +15,7 @@ class User
                 $hash = password_hash($password, PASSWORD_DEFAULT);
                 $stmt = $conn->prepare("INSERT INTO user (email, first_name, last_name, `password`) VALUES (?,?,?,?)");
                 $stmt->execute([$email, $firstname, $lastname, $hash]);
+                header("Location: login.php");
             } else {
                 return "false";
             } 
@@ -48,7 +49,12 @@ class User
                     $_SESSION["role"] = $result[0][5];
                     $_SESSION["job_role"] = $result[0][6];
                     $_SESSION['name'] = $result[0][2];
-                    header("Location: dashboard.php");
+                    if ($result[0][5] == 3) {
+                        header("Location: users.php");
+                    }
+                    else {
+                        header("Location: dashboard.php");
+                    }
                 }
             }
         } catch (PDOException $e) {

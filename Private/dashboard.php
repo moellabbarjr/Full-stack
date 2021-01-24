@@ -131,15 +131,6 @@ if($deny == false){
                 <label for="loginEmail">Datum:</label>
                 <input id="loginEmail" type="date" name="date" required>
             </div>
-            <!-- kan uiteindelijk weg -->
-            <div class="input-group">
-                <label for="loginEmail">Wat voor dienst:</label>
-                <select name="job_choise" id="cars">
-                    <?php foreach(add_job::different_jobs() as $jobs) { ?>
-                        <option value="<?=$jobs[0]?>"><?=$jobs[1]?></option>
-                    <?php } ?>
-                </select>
-            </div>
             <div class="button-container">
                 <button type="submit" name="toevoegen" class="btn">done</button>
             </div>

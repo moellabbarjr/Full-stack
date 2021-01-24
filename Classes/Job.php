@@ -13,7 +13,7 @@ class Job
         try {
             $conn = (new DB)->connect();
 
-            $stmt = $conn->query("SELECT job_title FROM job");
+            $stmt = $conn->query("SELECT `job_id` , `job_title` FROM job");
 
             $result = $stmt->fetchAll();
             $connection = null;

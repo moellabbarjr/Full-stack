@@ -7,7 +7,7 @@ class add_job {
 
             
             $stmt = $conn->prepare("INSERT INTO `agenda` (`job_id`, `user_id`, `startTime`, `endTime`, `date`) VALUES (?,?,?,?,?)");
-            $stmt->execute([$job, $volunteer, $startTime, $endTime, $date]);
+            $stmt->execute([$_SESSION["job_role"], $volunteer, $startTime, $endTime, $date]);
             header("Location: dashboard.php");
             
             

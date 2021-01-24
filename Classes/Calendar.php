@@ -39,12 +39,12 @@ class Calendar
             FROM `agenda` a
             LEFT JOIN `job` j ON `a`.`job_id` = `j`.`job_id`
             LEFT JOIN `user` u ON `a`.`user_id` = `u`.`user_id`
-            WHERE WEEK(`a`.`date`, 3) = ?
+            WHERE WEEK(`a`.`date`, 3) = ? AND a.job_id = ?
             ORDER BY `a`.`date` AND `a`.`startTime` ASC";
 
             $conn = (new DB)->connect();
             $stmt= $conn->prepare($sql);
-            $stmt->execute([$week]);
+            $stmt->execute([$week , $_SESSION["job_role"]]);
         }
 
         
@@ -61,7 +61,7 @@ class Calendar
                 // $date = date("l j F", strtotime($row["date"]));
                 $date = strftime("%A %e %B", strtotime($row["date"]));
                 $job = $row["job_title"];
-                $description = $row["job_desc"];
+                $description = $row["job_title"];
 
 
                 $html .= <<<HTML
