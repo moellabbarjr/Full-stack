@@ -1,0 +1,15 @@
+.footer-con{
+    background-color: #3b3937;
+    width: 100%;
+    height: 3rem;
+    position: relative;
+    top: 10rem;
+}
+
+.footer-copyr{
+    width: 100%;
+    text-align: center;
+    color: white;
+    padding-top: 13px;
+    font-size: 10px;
+}

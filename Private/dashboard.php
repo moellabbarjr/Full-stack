@@ -7,6 +7,10 @@ $calendar = new Calendar();
 $offset = 0;
 $deny = false;
 
+//availability ophalen.
+$availability = (new Availability());
+$datas = $availability->Fetch();
+
 if (isset($_GET["week_offset"])) {
     $offset = htmlspecialchars($_GET["week_offset"]);
 }
@@ -59,9 +63,45 @@ if($deny == false){
 
 <div class="rightInfoDiv">
   <p class="welcomeUserMessage"> Welkom <?=$name?></p>
-  hier komt de availibity te staan zodat de user makkelijk overzicht heeft.
-</div>
+    <b>Hierbij wordt de aanwezigheid getoond van de vrijwilligers</b>
+    <br>
+<table border="" cellpadding="" cellspacing="" align="center">
 
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Maandag</th>
+            <th scope="col">Dinsdag</th>
+            <th scope="col">Woensdag</th>
+            <th scope="col">Donderdag</th>
+            <th scope="col">Vrijdag</th>
+            <th scope="col">Zaterdag</th>
+            <th scope="col">Zondag</th>
+            <th scope="col">Naam</th>
+            <th scope="col">Achternaam</th>
+        </tr>
+        </thead>
+        <tbody>
+    <?php foreach ($datas as $data) { ?>
+        <tr>
+
+            <td><?php echo $data['monday']; ?></td>
+            <td><?php echo $data['tuesday']; ?></td>
+            <td><?php echo $data['wednesday']; ?></td>
+            <td><?php echo $data['thursday']; ?></td>
+            <td><?php echo $data['friday']; ?></td>
+            <td><?php echo $data['saturday']; ?></td>
+            <td><?php echo $data['sunday']; ?></td>
+            <td><?php echo $data['first_name']; ?></td>
+            <td><?php echo $data['last_name']; ?></td>
+        </tr>
+    <?php   }
+    ?>
+        </tbody>
+    </table>
+</table>
+</div>
+    </html>
 <div id="modal">
   <div id="modal-content">
     <div id="modal-head">
@@ -130,8 +170,10 @@ if($deny == false){
                 <button id="add" class="calendar-button"><i class="fas fa-plus"></i></button>
             </div>
         <?php } ?>
-    </div>
-<?php
+        </div>
+  </div>
+
+  <?php
 } 
 ?>
  
