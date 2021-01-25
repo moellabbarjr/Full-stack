@@ -12,15 +12,44 @@ $job = (new Job());
 $job_title = $job->getJob();
 $availability = (new Availability());
 
-if(isset($_POST['availability'])){
 
-    $monday = htmlspecialchars($_POST['mondayBeginTime']) . "," . htmlspecialchars($_POST['mondayEndTime']);
-    $tuesday = htmlspecialchars($_POST['tuesdayBeginTime']) . "," . htmlspecialchars($_POST['tuesdayEndTime']);
-    $wednesday = htmlspecialchars($_POST['wednesdayBeginTime']) . "," . htmlspecialchars($_POST['wednesdayEndTime']);
-    $thursday = htmlspecialchars($_POST['thursdayBeginTime']) . "," . htmlspecialchars($_POST['thursdayEndTime']);
-    $friday = htmlspecialchars($_POST['fridayBeginTime']) . "," . htmlspecialchars($_POST['fridayEndTime']);
-    $saturday = htmlspecialchars($_POST['saturdayBeginTime']) . "," . htmlspecialchars($_POST['saturdayEndTime']);
-    $sunday = htmlspecialchars($_POST['sundayBeginTime']) . "," . htmlspecialchars($_POST['sundayEndTime']);
+if(isset($_POST['availability'])){
+if (!empty($_POST['mondayBeginTime'])&&$_POST['mondayEndTime']) {
+    $monday = htmlspecialchars($_POST['mondayBeginTime']) . " - " . htmlspecialchars($_POST['mondayEndTime']);
+} else {
+    $monday = "Afwezig";
+}
+if (!empty($_POST['tuesdayBeginTime'])&&$_POST['tuesdayEndTime']) {
+    $tuesday = htmlspecialchars($_POST['tuesdayBeginTime']) . " - " . htmlspecialchars($_POST['tuesdayEndTime']);
+} else {
+    $tuesday = "Afwezig";
+}
+if (!empty($_POST['wednesdayBeginTime'])&&$_POST['wednesdayEndTime']) {
+    $wednesday = htmlspecialchars($_POST['wednesdayBeginTime']) . " - " . htmlspecialchars($_POST['wednesdayEndTime']);
+} else {
+    $wednesday = "Afwezig";
+}
+if (!empty($_POST['thursdayBeginTime'])&&$_POST['thursdayEndTime']) {
+    $thursday = htmlspecialchars($_POST['thursdayBeginTime']) . " - " . htmlspecialchars($_POST['thursdayEndTime']);
+} else {
+    $thursday = "Afwezig";
+}
+if (!empty($_POST['fridayBeginTime'])&&$_POST['fridayEndTime']) {
+    $friday = htmlspecialchars($_POST['fridayBeginTime']) . " - " . htmlspecialchars($_POST['fridayEndTime']);
+} else {
+    $friday = "Afwezig";
+}
+if (!empty($_POST['saturdayBeginTime'])&&$_POST['saturdayEndTime']) {
+    $saturday = htmlspecialchars($_POST['saturdayBeginTime']) . " - " . htmlspecialchars($_POST['saturdayEndTime']);
+} else {
+    $saturday = "Afwezig";
+}
+if (!empty($_POST['sundayBeginTime'])&&$_POST['sundayEndTime']) {
+    $sunday = htmlspecialchars($_POST['sundayBeginTime']) . " - " . htmlspecialchars($_POST['sundayEndTime']);
+} else {
+    $sunday = "Afwezig";
+}
+
     $job_preference = htmlspecialchars($_POST['job_p']);
     var_dump($availability->add($monday,$tuesday,$wednesday,$thursday,$friday,$saturday,$sunday,$job_preference));
 }

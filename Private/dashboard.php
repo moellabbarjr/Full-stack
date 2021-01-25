@@ -55,8 +55,8 @@ if($deny == false){
             <th scope="col">Vrijdag</th>
             <th scope="col">Zaterdag</th>
             <th scope="col">Zondag</th>
-            <th scope="col">Naam</th>
-            <th scope="col">Achternaam</th>
+<!--            <th scope="col">Naam</th>-->
+<!--            <th scope="col">Achternaam</th>-->
         </tr>
         </thead>
         <tbody>
@@ -70,8 +70,8 @@ if($deny == false){
             <td><?php echo $data['friday']; ?></td>
             <td><?php echo $data['saturday']; ?></td>
             <td><?php echo $data['sunday']; ?></td>
-            <td><?php echo $data['first_name']; ?></td>
-            <td><?php echo $data['last_name']; ?></td>
+            <td><?php //echo $data['first_name']; ?></td>
+            <td><?php //echo $data['last_name']; ?></td>
         </tr>
     <?php   }
     ?>
