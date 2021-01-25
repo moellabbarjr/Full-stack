@@ -7,7 +7,25 @@ class add_job {
 
             
             $stmt = $conn->prepare("INSERT INTO `agenda` (`job_id`, `user_id`, `startTime`, `endTime`, `date`) VALUES (?,?,?,?,?)");
-            $stmt->execute([$job, $volunteer, $startTime, $endTime, $date]);
+            $stmt->execute([$_SESSION["job_role"], $volunteer, $startTime, $endTime, $date]);
+            header("Location: dashboard.php");
+            
+            
+        } catch (PDOException $e) {
+            return false;
+        } 
+
+    exit;
+    }
+
+    public function delete_job($id) {
+        try {
+            $conn = DB::connect();
+
+            
+            $stmt = $conn->prepare("DELETE FROM `agenda` WHERE id = ?");
+            $stmt->execute([$id]);
+            header("Location: dashboard.php");
             
             
         } catch (PDOException $e) {

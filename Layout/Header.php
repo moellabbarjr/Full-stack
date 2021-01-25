@@ -20,6 +20,7 @@ spl_autoload_register(function ($class) {
   <script src="https://kit.fontawesome.com/f1e6762606.js" crossorigin="anonymous"></script>
   <script src="Javascript/script.js" type="text/javascript"></script>
   <link rel="stylesheet" href="../Style/Main.css">
+
   <title>VVZA Portaal</title>
 
 </head>
@@ -46,7 +47,8 @@ spl_autoload_register(function ($class) {
           <a href="../Private/login.php">Login</a>
         <?php } ?>
         <?php if (isset($_SESSION["sessionid"])) {
-            if($_SERVER['REQUEST_URI'] == "/index.php"){ ?>
+            if($_SERVER['REQUEST_URI'] == "/index.php" or $_SERVER['REQUEST_URI'] == "/"){ ?>
+            
             <a href="Private/dashboard.php">Home</a>
             <a href="Private/registration_form.php">Beschikbaarheid</a>
             <a href="Private/logout.php">Log uit</a>

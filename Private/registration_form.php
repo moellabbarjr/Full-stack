@@ -13,7 +13,7 @@ $job_title = $job->getJob();
 $availability = (new Availability());
 
 if(isset($_POST['availability'])){
-    var_dump($_POST);
+
     $monday = htmlspecialchars($_POST['mondayBeginTime']) . "," . htmlspecialchars($_POST['mondayEndTime']);
     $tuesday = htmlspecialchars($_POST['tuesdayBeginTime']) . "," . htmlspecialchars($_POST['tuesdayEndTime']);
     $wednesday = htmlspecialchars($_POST['wednesdayBeginTime']) . "," . htmlspecialchars($_POST['wednesdayEndTime']);
@@ -24,8 +24,6 @@ if(isset($_POST['availability'])){
     $job_preference = htmlspecialchars($_POST['job_p']);
     $availability->add($monday,$tuesday,$wednesday,$thursday,$friday,$saturday,$sunday,$job_preference);
 }
-//var_dump($job->getJob());
-
 ?>
     <div class="container container-center">
         <div class="loginCard">
@@ -71,9 +69,9 @@ if(isset($_POST['availability'])){
                 <div class="input-group">
                     <label for="selectJob">Taken:</label>
                     <select id = "myList" name="job_p">
-                        <option value = "4"> <?= $job_title[0]["job_title"]?></option>
-                        <option value = "2"> <?= $job_title[1]["job_title"]?></option>
-                        <option value = "3"> <?= $job_title[2]["job_title"]?></option>
+                        <?php foreach(Job::getJob() as $job) { ?>
+                            <option value="<?=$job['job_id']?>"> <?= $job["job_title"]?></option>
+                        <?php } ?>
                     </select>
                 </div>
                 <div class="button-container">

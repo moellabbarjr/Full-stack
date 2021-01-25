@@ -7,11 +7,9 @@ $calendar = new Calendar();
 $offset = 0;
 $deny = false;
 
-//$View = (new View());
-//availability ophalen
-$pdo = new PDO("mysql:host=127.0.0.1;dbname=vvza_database","root","");
-$query = "SELECT * FROM availability a INNER JOIN user u ON a.user_id=u.user_id;";
-$d = $pdo->query($query);
+//availability ophalen.
+$availability = (new Availability());
+$datas = $availability->Fetch();
 
 if (isset($_GET["week_offset"])) {
     $offset = htmlspecialchars($_GET["week_offset"]);
@@ -29,45 +27,75 @@ if (isset($_GET["reset"])) {
     $offset = 0;
 }
 
-$name = $_SESSION['name'];
-
 if(!$_SESSION['name']){
   $deny = true;
   echo("Er is iets fout gegaan met het inloggen, probeer het opnieuw. U word over 5 seconden terug gestuurd.");
   header("refresh:6;url=login.php");
 }
 
+// toevoegen van een vrijwilliger voor in het rooster
+if(isset($_POST['toevoegen'])){
+    $startTime = htmlspecialchars($_POST['startTime']);
+    $endTime = htmlspecialchars($_POST['endTime']);
+    $date = htmlspecialchars($_POST['date']);
+    $job = htmlspecialchars($_POST['job_choise']);
+    $volunteer = htmlspecialchars($_POST['volunteer']);
+
+    $user = (new add_job);
+
+    $user->add_newjob($startTime, $endTime, $date, $job, $volunteer);
+}
+
+// verwijderen van een vrijwilliger uit het rooster
+if (isset($_POST['verwijderen'])) {
+    $id = htmlspecialchars($_POST['inputid']);
+
+    $user = (new add_job);
+
+    $user->delete_job($id);
+}
+
+var_dump($_SESSION["role"]);
+
 if($deny == false){
 
 ?>
 
 <div class="rightInfoDiv">
-  <p class="welcomeUserMessage"> Welkom <?=$name?></p>
+  <p class="welcomeUserMessage"> Welkom <?=$_SESSION['name']?></p>
     <b>Hierbij wordt de aanwezigheid getoond van de vrijwilligers</b>
-    <br>
-<table border="" cellpadding="" cellspacing="" align="center">
-    <tr>
-        <th>Maandag</th>
-        <th>Dinsdag</th>
-        <th>Woensdag</th>
-        <th>Donderdag</th>
-        <th>Vrijdag</th>
-        <th>Naam</th>
-        <th>Achternaam</th>
-    </tr>
-    <?php foreach ($d as $data) { ?>
+    <table class="table">
+        <thead>
         <tr>
+            <th scope="col">Maandag</th>
+            <th scope="col">Dinsdag</th>
+            <th scope="col">Woensdag</th>
+            <th scope="col">Donderdag</th>
+            <th scope="col">Vrijdag</th>
+            <th scope="col">Zaterdag</th>
+            <th scope="col">Zondag</th>
+            <th scope="col">Naam</th>
+            <th scope="col">Achternaam</th>
+        </tr>
+        </thead>
+        <tbody>
+    <?php foreach ($datas as $data) { ?>
+        <tr>
+
             <td><?php echo $data['monday']; ?></td>
             <td><?php echo $data['tuesday']; ?></td>
             <td><?php echo $data['wednesday']; ?></td>
             <td><?php echo $data['thursday']; ?></td>
             <td><?php echo $data['friday']; ?></td>
+            <td><?php echo $data['saturday']; ?></td>
+            <td><?php echo $data['sunday']; ?></td>
             <td><?php echo $data['first_name']; ?></td>
             <td><?php echo $data['last_name']; ?></td>
         </tr>
- <?php   }
-?>
-</table>
+    <?php   }
+    ?>
+        </tbody>
+    </table>
 </div>
 <div id="modal">
   <div id="modal-content">
@@ -78,6 +106,14 @@ if($deny == false){
 
     <div id="modal-body">
         <form action="" method="POST">
+            <div class="input-group">
+                <label for="loginEmail">Wie doet deze dienst:</label>
+                <select name="volunteer" id="cars">
+                    <?php foreach(add_job::volunteer() as $volunteer) { ?>
+                        <option value="<?=$volunteer[0]?>"><?=$volunteer[2]?> <?=$volunteer[3]?></option>
+                    <?php } ?>
+                </select>
+            </div>
             <div class="input-group">
                 <label for="loginEmail">Begin tijd:</label>
                 <input id="loginEmail" type="time" name="startTime" required>
@@ -90,22 +126,6 @@ if($deny == false){
                 <label for="loginEmail">Datum:</label>
                 <input id="loginEmail" type="date" name="date" required>
             </div>
-            <div class="input-group">
-                <label for="loginEmail">Wat voor dienst:</label>
-                <select name="job_choise" id="cars">
-                    <?php foreach(add_job::different_jobs() as $jobs) { ?>
-                        <option value="<?=$jobs[0]?>"><?=$jobs[1]?></option>
-                    <?php } ?>
-                </select>
-            </div>
-            <div class="input-group">
-                <label for="loginEmail">Wie doet deze dienst:</label>
-                <select name="volunteer" id="cars">
-                    <?php foreach(add_job::volunteer() as $volunteer) { ?>
-                        <option value="<?=$volunteer[0]?>"><?=$volunteer[2]?> <?=$volunteer[3]?></option>
-                    <?php } ?>
-                </select>
-            </div>
             <div class="button-container">
                 <button type="submit" name="toevoegen" class="btn">done</button>
             </div>
@@ -114,8 +134,7 @@ if($deny == false){
   </div>
 </div>
 
-  <div id="calendar">
-  
+  <div id="calendar"> 
     <form action="" method="GET">
       <input name="week_offset" type="hidden" value=<?=$offset?>>
       <div id="calendar-head">
@@ -127,18 +146,19 @@ if($deny == false){
         </div>
 
         <button type="submit" name="next" class="calendar-arrow"><i class="fas fa-arrow-right"></i></button>
-      </div>
+        </div>
     </form>
     <div id="calendar-body">
-      <?=$calendar->GetTasks($offset)?>
+        <?=$calendar->GetTasks($offset)?>
     </div>
-
-        <?php if (isset($_SESSION["role"]) == "2") { ?>
-        <div id="calendar-foot">
-            <button id="add" class="calendar-button"><i class="fas fa-plus"></i></button>
+        <?php if (isset($_SESSION["role"]) == "1") { ?>
+            <div id="calendar-foot">
+                <button id="add" class="calendar-button"><i class="fas fa-plus"></i></button>
+            </div>
         <?php } ?>
         </div>
   </div>
+
   <?php
 } 
 ?>
