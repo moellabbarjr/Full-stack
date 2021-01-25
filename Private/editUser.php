@@ -22,14 +22,15 @@ if(isset($_POST['submit'])){
     $email = htmlspecialchars($_POST['email']);
     $firstname = htmlspecialchars($_POST['firstname']);
     $lastname = htmlspecialchars($_POST['lastname']);
+    $job = htmlspecialchars($_POST['job']);
+    $role = htmlspecialchars($_POST['role']);
 
-    if((new User)->updateUser($user['user_id'],$firstname,$lastname,$email)){
-        header("location:users.php");
+    if((new User)->updateUser($user['user_id'],$firstname,$lastname,$email,$job,$role)){
+        var_dump($_POST);
     }else{
         echo "Er ging iets fout met het aanpassen van de gebruiker, probeer het later nog eens.";
-    }
+   }
 }
-
 if($deny == false){
 
 ?>
@@ -57,31 +58,33 @@ if($deny == false){
             <td><input value="<?= $user['first_name']?>"name="firstname" type="text" ></td>
             <td><input value="<?= $user['last_name']?>"name="lastname" type="text" ></td>
             <td>
-                <select>
-                <?php
-                    foreach($jobs as $job){
-                        
-                ?>
-                    <option><?=$job['job_title']?></option>
-                <?php
-                    }
-                ?>
+                <select name="job">
+                    <option id="currentjob" value=<?=$user['job_role']?>><?=$user['job_title']?></option>
+
+                    <?php
+                        foreach($jobs as $job){
+                            
+                    ?>
+                        <option value="<?=$job['job_id']?>"><?=$job['job_title']?></option>
+                    <?php
+                        }
+                    ?>
                 </select>
             </td>
             <td>
-            <select>
-            <option id="currentrole"><?=$user['role']?></option>
-                <?php
-           
-                    foreach($roles as $role){
-                        if($user['role'] == $role['role']){
-                        }else{
-                ?>  
-                    <option id="<?=$role['role_id']?>"><?=$role['role']?></option>
-                <?php
-                    }
-                }
-                ?>
+                <select name="role">
+                    <option id="currentrole" ><?=$user['role']?></option>
+                        <?php
+                
+                            foreach($roles as $role){
+                                if($user['role'] == $role['role']){
+                                }else{
+                        ?>  
+                            <option id="<?=$role['role_id']?>" name="role"><?=$role['role']?></option>
+                        <?php
+                            }
+                        }
+                        ?>
                 </select>
             </td>
 
