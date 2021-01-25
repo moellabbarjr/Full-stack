@@ -151,11 +151,12 @@ if($deny == false){
     <div id="calendar-body">
         <?=$calendar->GetTasks($offset)?>
     </div>
-        <?php if (isset($_SESSION["role"]) == "1") { ?>
-            <div id="calendar-foot">
+        <?php if($_SESSION["role"] == "2") { ?>
+            <div id="calendar-foot" >
                 <button id="add" class="calendar-button"><i class="fas fa-plus"></i></button>
             </div>
-        <?php } ?>
+        <?php }else{} ?>
+
         </div>
   </div>
 
