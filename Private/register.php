@@ -26,25 +26,21 @@ if(isset($_POST['register'])){
           <p>VVZA Vrijwilligers Portaal</p>
         </div>
         <form action="" method="POST">
-          <div class="input-group">
-            <label for="loginEmail">E-mailadres:</label>
-            <input id="loginEmail" type="email" placeholder="E-mailadres" name="email" >
-          </div>
-          <div class="input-group">
-            <label for="loginPassword" class="align">Voornaam:</label>
-            <input id="loginPassword" type="text" placeholder="Voornaam" name="firstname" class="aligner" >
-          </div>
-          <div class="input-group">
-            <label for="loginPassword">Achternaam:</label>
-            <input id="loginPassword" type="text" placeholder="Achternaam" name="lastname">
-          </div>
-          <div class="input-group">
-            <label for="loginPassword">Wachtwoord:</label>
-            <input id="loginPassword" type="password" placeholder="Wachtwoord" name="password" >
-          </div>
-          <div class="input-group">
-            <label for="loginPassword">Herhaal Wachtwoord:</label>
-            <input id="loginPassword" type="password" placeholder="Herhaal Wachtwoord" name="passwordRepeat" >
+          <div class="form-container">
+              <label for="loginEmail">E-mailadres:</label>
+              <input id="loginEmail" type="email" placeholder="E-mailadres" name="email" >
+
+              <label for="loginPassword" class="align">Voornaam:</label>
+              <input id="loginPassword" type="text" placeholder="Voornaam" name="firstname" class="aligner" >
+
+              <label for="loginPassword">Achternaam:</label>
+              <input id="loginPassword" type="text" placeholder="Achternaam" name="lastname">
+
+              <label for="loginPassword">Wachtwoord:</label>
+              <input id="loginPassword" type="password" placeholder="Wachtwoord" name="password" >
+
+              <label for="loginPassword">Herhaal Wachtwoord:</label>
+              <input id="loginPassword" type="password" placeholder="Herhaal Wachtwoord" name="passwordRepeat" >
           </div>
           <div class="button-container">
             <button type="submit" name="register" class="btn">Aanmelden</button> <br>

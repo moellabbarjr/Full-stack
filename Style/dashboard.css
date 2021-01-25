@@ -8,6 +8,12 @@
     width: 45%;
     height: 80vh;
     float: right;
+    background-color: #FCFCFC;
+    padding: 12px;
+}
+
+.rightInfoContainer {
+    overflow: scroll;
 }
 
 .welcomeUserMessage {
