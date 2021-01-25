@@ -94,7 +94,7 @@ class User
         try{
             $conn = (new DB)->connect();
 
-            $stmt = $conn->prepare("SELECT * FROM user WHERE user_id  = ?");
+            $stmt = $conn->prepare("SELECT * FROM user a INNER JOIN job u ON a.job_role = u.job_id WHERE a.user_id  = ?");
             $stmt->execute([$id]);
             
             $result = $stmt->fetch();
@@ -182,12 +182,12 @@ class User
         exit;
     }
 
-    public function updateUser($id, $firstName, $lastName, $email) {
+    public function updateUser($id, $firstName, $lastName, $email, $role, $job) {
         try{
             $conn = (new DB)->connect();
 
-            $stmt = $conn->prepare("UPDATE user SET first_name=?, last_name=?,email=?  WHERE user_id = ? ");
-            $stmt->execute([$firstName, $lastName, $email, $id]);
+            $stmt = $conn->prepare("UPDATE user SET first_name=?, last_name=?,email=?,role=?,job_role=?  WHERE user_id = ? ");
+            $stmt->execute([$firstName, $lastName, $email, $id, $role, $job]);
 
             $connection = null;
 

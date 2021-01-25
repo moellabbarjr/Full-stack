@@ -27,8 +27,6 @@ if (isset($_GET["reset"])) {
     $offset = 0;
 }
 
-$name = $_SESSION['name'];
-
 if(!$_SESSION['name']){
   $deny = true;
   echo("Er is iets fout gegaan met het inloggen, probeer het opnieuw. U word over 5 seconden terug gestuurd.");
@@ -57,16 +55,15 @@ if (isset($_POST['verwijderen'])) {
     $user->delete_job($id);
 }
 
+var_dump($_SESSION["role"]);
+
 if($deny == false){
 
 ?>
 
 <div class="rightInfoDiv">
-  <p class="welcomeUserMessage"> Welkom <?=$name?></p>
+  <p class="welcomeUserMessage"> Welkom <?=$_SESSION['name']?></p>
     <b>Hierbij wordt de aanwezigheid getoond van de vrijwilligers</b>
-    <br>
-<table border="" cellpadding="" cellspacing="" align="center">
-
     <table class="table">
         <thead>
         <tr>
@@ -99,9 +96,7 @@ if($deny == false){
     ?>
         </tbody>
     </table>
-</table>
 </div>
-    </html>
 <div id="modal">
   <div id="modal-content">
     <div id="modal-head">
@@ -156,7 +151,7 @@ if($deny == false){
     <div id="calendar-body">
         <?=$calendar->GetTasks($offset)?>
     </div>
-        <?php if (isset($_SESSION["role"]) == "2") { ?>
+        <?php if (isset($_SESSION["role"]) == "1") { ?>
             <div id="calendar-foot">
                 <button id="add" class="calendar-button"><i class="fas fa-plus"></i></button>
             </div>

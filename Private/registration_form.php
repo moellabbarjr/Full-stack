@@ -22,7 +22,7 @@ if(isset($_POST['availability'])){
     $saturday = htmlspecialchars($_POST['saturdayBeginTime']) . "," . htmlspecialchars($_POST['saturdayEndTime']);
     $sunday = htmlspecialchars($_POST['sundayBeginTime']) . "," . htmlspecialchars($_POST['sundayEndTime']);
     $job_preference = htmlspecialchars($_POST['job_p']);
-    var_dump($availability->add($monday,$tuesday,$wednesday,$thursday,$friday,$saturday,$sunday,$job_preference));
+    $availability->add($monday,$tuesday,$wednesday,$thursday,$friday,$saturday,$sunday,$job_preference);
 }
 ?>
     <div class="container container-center">
