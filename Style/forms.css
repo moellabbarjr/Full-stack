@@ -1,0 +1,13 @@
+.form-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-row-gap: 5px;
+}
+
+.three-columns {
+    grid-template-columns: auto auto auto !important;
+}
+
+.column-wide {
+    grid-column: 2 / 4;
+}

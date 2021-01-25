@@ -42,7 +42,6 @@ class User
             
             if (count($result) == 1) {
                 if (password_verify($password, $result[0][4])) {
-                    session_start();
                     $_SESSION["sessionid"] = session_id();
                     $_SESSION["loggedin"] = $result[0][0];
                     $_SESSION["role"] = $result[0][5];

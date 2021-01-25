@@ -5,6 +5,7 @@
 @import "table.css";
 @import "dashboard.css";
 @import "Footer.css";
+@import "forms.css";
 
 * {
     padding: 0;
