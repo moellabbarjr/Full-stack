@@ -36,7 +36,9 @@ nav {
  
   }
   nav ul li a:hover{
-    border-bottom: 3px solid red;
+    border-bottom: 3px solid white;
+    color: white !important;
+    text-decoration: none;
   }
 
   nav u li a{
