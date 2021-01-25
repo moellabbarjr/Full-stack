@@ -55,8 +55,6 @@ if (isset($_POST['verwijderen'])) {
     $user->delete_job($id);
 }
 
-var_dump($_SESSION["role"]);
-
 if($deny == false){
 
 ?>
