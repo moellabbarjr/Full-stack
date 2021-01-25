@@ -26,7 +26,6 @@ if(isset($_POST['submit'])){
     $role = htmlspecialchars($_POST['role']);
 
     if((new User)->updateUser($user['user_id'],$firstname,$lastname,$email,$job,$role)){
-        var_dump($_POST);
     }else{
         echo "Er ging iets fout met het aanpassen van de gebruiker, probeer het later nog eens.";
    }
@@ -61,14 +60,9 @@ if($deny == false){
                 <select name="job">
                     <option id="currentjob" value=<?=$user['job_role']?>><?=$user['job_title']?></option>
 
-                    <?php
-                        foreach($jobs as $job){
-                            
-                    ?>
+                    <?php foreach($jobs as $job){ ?>
                         <option value="<?=$job['job_id']?>"><?=$job['job_title']?></option>
-                    <?php
-                        }
-                    ?>
+                    <?php } ?>
                 </select>
             </td>
             <td>

@@ -186,8 +186,9 @@ class User
         try{
             $conn = (new DB)->connect();
 
+
             $stmt = $conn->prepare("UPDATE user SET first_name=?, last_name=?,email=?,role=?,job_role=?  WHERE user_id = ? ");
-            $stmt->execute([$firstName, $lastName, $email, $id, $role, $job]);
+            $stmt->execute([$firstName, $lastName, $email, $job, $role, $id]);
 
             $connection = null;
 
