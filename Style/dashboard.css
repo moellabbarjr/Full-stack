@@ -13,3 +13,6 @@
 .welcomeUserMessage {
     font-size: 1.5rem;
 }
+.invisible{
+    visibility: hidden;
+}
