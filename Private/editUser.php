@@ -7,8 +7,8 @@ switch($_SESSION['role']){
         echo("Er is iets fout gegaan met het inloggen, probeer het opnieuw. U word over 5 seconden terug gestuurd.");
         header("refresh:6;url=login.php");
         break;
-    case "user":
-    case "admin":
+    case "1":
+    case "2":
         $deny = true;
         echo("Uw heeft niet de rechten om dit te zien, over 5 seconden word u teruggestuurd naar uw dashboard.");
         header("refresh:5;url=dashboard.php");
@@ -67,14 +67,14 @@ if($deny == false){
             </td>
             <td>
                 <select name="role">
-                    <option id="currentrole" ><?=$user['role']?></option>
+                    <option id="currentrole" value="<?=$user['role_id']?>"><?=$user['role']?></option>
                         <?php
                 
                             foreach($roles as $role){
                                 if($user['role'] == $role['role']){
                                 }else{
                         ?>  
-                            <option id="<?=$role['role_id']?>" name="role"><?=$role['role']?></option>
+                            <option id="<?=$role['role_id']?>" value="<?=$role['role_id']?>"><?=$role['role']?></option>
                         <?php
                             }
                         }
