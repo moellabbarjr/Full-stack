@@ -46,9 +46,14 @@ class User
                     $_SESSION["sessionid"] = session_id();
                     $_SESSION["loggedin"] = $result[0][0];
                     $_SESSION["role"] = $result[0][5];
+                    $_SESSION["job_role"] = $result[0][6];
                     $_SESSION['name'] = $result[0][2];
-                    $_SESSION['job_role'] = $result[0][6];
-                    header("Location: dashboard.php");
+                    if ($result[0][5] == 3) {
+                        header("Location: users.php");
+                    }
+                    else {
+                        header("Location: dashboard.php");
+                    }
                 }
             }
         } catch (PDOException $e) {
@@ -180,8 +185,9 @@ class User
         try{
             $conn = (new DB)->connect();
 
+
             $stmt = $conn->prepare("UPDATE user SET first_name=?, last_name=?,email=?,role=?,job_role=?  WHERE user_id = ? ");
-            $stmt->execute([$firstName, $lastName, $email, $id, $role, $job]);
+            $stmt->execute([$firstName, $lastName, $email, $job, $role, $id]);
 
             $connection = null;
 
