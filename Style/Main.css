@@ -4,6 +4,7 @@
 @import "login.css";
 @import "table.css";
 @import "dashboard.css";
+@import "Footer.css";
 
 * {
     padding: 0;
@@ -14,10 +15,6 @@
 
 body {
     background-color: rgb(229, 228, 224);
-  }
-
-.active {
-    border-bottom: 3px solid #a81010 ;
   }
 
 a {
