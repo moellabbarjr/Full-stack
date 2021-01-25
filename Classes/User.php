@@ -23,6 +23,7 @@ class User
         catch(PDOexception $e) {
             echo json_encode([
                 'error' => $e->getMessage(),
+                
             ]);
     
             print "Error!: " . $e->getMessage() . "<br/>";
