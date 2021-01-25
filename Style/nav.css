@@ -14,7 +14,6 @@ nav {
   nav .links {
     height: 100% ;
     display: flex;
-    /* color: #a81010; */
     font-size: 45px;
     align-items: center;
   }
@@ -37,7 +36,9 @@ nav {
  
   }
   nav ul li a:hover{
-    border-bottom: 3px solid red;
+    border-bottom: 3px solid white;
+    color: white !important;
+    text-decoration: none;
   }
 
   nav u li a{
