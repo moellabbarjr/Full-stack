@@ -30,8 +30,8 @@ if (isset($_GET["reset"])) {
   <p class="Hoofdtext">Home</p>
 
   <div class="con_banner">
-    <img class="banner_home" src="Img/img_838d52.png" alt="">
-    <p class="welkom_text" >Welkom bij VVZA portaal</p>
+    <img class="banner_home" src="Img/IMG_0009-768x5766.jpg" alt="">
+      <p class="welkom_text" ><b>Welkom bij VVZA portaal</b></p>
   </div>
 
   <div class="grid-container">
@@ -40,9 +40,9 @@ if (isset($_GET["reset"])) {
         <b>VVZA Portaal</b>
         <p>Welkom bij het nieuwe VVZA portaal.<br>
          Op deze gloednieuwe website kunt u inloggen en een taak op u nemen. <br>
-         Klik onderaan het nieuwe portaal te ontdekken.<br>
-         Veel succes! <br>
-         <a href="../Private/login.php"><button type="button" name="login" class="btn-home">Ontdekken</button></a>
+         Klik onderaan om het nieuwe portaal te ontdekken.<br><br>
+         Veel succes! <br><br>
+         <a href="../Private/login.php"><button type="button" name="login" class="btn-home">VVZA Portaal</button></a>
         
         </p>
       </p>
