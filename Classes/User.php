@@ -93,9 +93,8 @@ class User
         try{
             $conn = (new DB)->connect();
 
-            $stmt = $conn->prepare("SELECT * FROM user a INNER JOIN job u ON a.job_role = u.job_id WHERE a.user_id  = ?");
+            $stmt = $conn->prepare("SELECT * FROM user a INNER JOIN job u ON a.job_role = u.job_id INNER JOIN role b on a.role = b.role_id WHERE a.user_id  = ?");
             $stmt->execute([$id]);
-            
             $result = $stmt->fetch();
             $connection = null;
 
@@ -138,7 +137,7 @@ class User
         try{
             $conn = (new DB)->connect();
 
-            $stmt = $conn->prepare("SELECT * FROM job");
+            $stmt = $conn->prepare("SELECT * FROM job ");
             $stmt->execute();
 
             
