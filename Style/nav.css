@@ -9,6 +9,7 @@ nav {
     position: sticky;
     top: 0;
     z-index: 1;
+
   }
 
   nav .links {
@@ -29,6 +30,7 @@ nav {
 
   nav .rechts ul li {
     list-style-type: none;
+
   }
   .navTitle {
     font-weight: bold;
@@ -43,12 +45,14 @@ nav {
 
   nav u li a{
     padding-top: 10px;
+
   }
 
   .vvzaIcon{
     padding: 2px 2px 2px 2px;
     width: 5rem;
     height: 5rem;
+
   }
 
 

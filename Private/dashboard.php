@@ -60,11 +60,15 @@ if($deny == false){
 ?>
 
 <div class="rightInfoDiv">
+  
   <p class="welcomeUserMessage"> Welkom <?=$_SESSION['name']?></p>
-    <b>Hierbij wordt de aanwezigheid getoond van de vrijwilligers</b>
-    <table class="table">
-        <thead>
+  <b>Hierbij wordt de aanwezigheid getoond van de vrijwilligers</b>
+  <div class="rightInfoContainer">
+    <table class="table table-striped table-responsive-md btn-table">
+        <thead class="font">
         <tr>
+            <th scope="col">Naam</th>
+<!--            <th scope="col">Achternaam</th>-->
             <th scope="col">Maandag</th>
             <th scope="col">Dinsdag</th>
             <th scope="col">Woensdag</th>
@@ -72,14 +76,13 @@ if($deny == false){
             <th scope="col">Vrijdag</th>
             <th scope="col">Zaterdag</th>
             <th scope="col">Zondag</th>
-            <th scope="col">Naam</th>
-            <th scope="col">Achternaam</th>
+
         </tr>
         </thead>
         <tbody>
     <?php foreach ($datas as $data) { ?>
-        <tr>
-
+        <tr class="font-2">
+            <td><?php echo $data['first_name'] . " " . $data['last_name'];?></td>
             <td><?php echo $data['monday']; ?></td>
             <td><?php echo $data['tuesday']; ?></td>
             <td><?php echo $data['wednesday']; ?></td>
@@ -87,13 +90,14 @@ if($deny == false){
             <td><?php echo $data['friday']; ?></td>
             <td><?php echo $data['saturday']; ?></td>
             <td><?php echo $data['sunday']; ?></td>
-            <td><?php echo $data['first_name']; ?></td>
-            <td><?php echo $data['last_name']; ?></td>
+
         </tr>
     <?php   }
     ?>
         </tbody>
     </table>
+  </div>
+  
 </div>
 <div id="modal">
   <div id="modal-content">
@@ -104,29 +108,26 @@ if($deny == false){
 
     <div id="modal-body">
         <form action="" method="POST">
-            <div class="input-group">
-                <label for="loginEmail">Wie doet deze dienst:</label>
-                <select name="volunteer" id="cars">
-                    <?php foreach(add_job::volunteer() as $volunteer) { ?>
-                        <option value="<?=$volunteer[0]?>"><?=$volunteer[2]?> <?=$volunteer[3]?></option>
-                    <?php } ?>
-                </select>
-            </div>
-            <div class="input-group">
-                <label for="loginEmail">Begin tijd:</label>
-                <input id="loginEmail" type="time" name="startTime" required>
-            </div>
-            <div class="input-group">
-                <label for="loginEmail">Eind tijd:</label>
-                <input id="loginEmail" type="time" name="endTime" required>
-            </div>
-            <div class="input-group">
-                <label for="loginEmail">Datum:</label>
-                <input id="loginEmail" type="date" name="date" required>
-            </div>
-            <div class="button-container">
-                <button type="submit" name="toevoegen" class="btn">done</button>
-            </div>
+          <div class="form-container">
+            <label for="loginEmail">Wie doet deze dienst:</label>
+            <select name="volunteer" id="cars">
+                <?php foreach(add_job::volunteer() as $volunteer) { ?>
+                    <option value="<?=$volunteer[0]?>"><?=$volunteer[2]?> <?=$volunteer[3]?></option>
+                <?php } ?>
+            </select>
+
+            <label for="loginEmail">Begin tijd:</label>
+            <input id="loginEmail" type="time" name="startTime" required>
+
+            <label for="loginEmail">Eind tijd:</label>
+            <input id="loginEmail" type="time" name="endTime" required>
+
+            <label for="loginEmail">Datum:</label>
+            <input id="loginEmail" type="date" name="date" required>
+          </div>
+          <div class="button-container">
+            <button type="submit" name="toevoegen" class="btn btn-success">Toevoegen</button>
+        </div>
         </form>
     </div>
   </div>
