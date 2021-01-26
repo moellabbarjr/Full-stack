@@ -18,7 +18,7 @@ if(isset($_POST['register'])){
 
 ?>
 
-<p class="Hoofdtext">Registeer</p>
+
 
 <div class="container container-center">
 <div class="loginCard">

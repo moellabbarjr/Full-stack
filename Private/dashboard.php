@@ -65,8 +65,10 @@ if($deny == false){
   <b>Hierbij wordt de aanwezigheid getoond van de vrijwilligers</b>
   <div class="rightInfoContainer">
     <table class="table table-striped table-responsive-md btn-table">
-        <thead>
+        <thead class="font">
         <tr>
+            <th scope="col">Naam</th>
+<!--            <th scope="col">Achternaam</th>-->
             <th scope="col">Maandag</th>
             <th scope="col">Dinsdag</th>
             <th scope="col">Woensdag</th>
@@ -74,14 +76,13 @@ if($deny == false){
             <th scope="col">Vrijdag</th>
             <th scope="col">Zaterdag</th>
             <th scope="col">Zondag</th>
-<!--            <th scope="col">Naam</th>-->
-<!--            <th scope="col">Achternaam</th>-->
+
         </tr>
         </thead>
         <tbody>
     <?php foreach ($datas as $data) { ?>
-        <tr>
-
+        <tr class="font-2">
+            <td><?php echo $data['first_name'] . " " . $data['last_name'];?></td>
             <td><?php echo $data['monday']; ?></td>
             <td><?php echo $data['tuesday']; ?></td>
             <td><?php echo $data['wednesday']; ?></td>
@@ -89,8 +90,7 @@ if($deny == false){
             <td><?php echo $data['friday']; ?></td>
             <td><?php echo $data['saturday']; ?></td>
             <td><?php echo $data['sunday']; ?></td>
-            <td><?php //echo $data['first_name']; ?></td>
-            <td><?php //echo $data['last_name']; ?></td>
+
         </tr>
     <?php   }
     ?>

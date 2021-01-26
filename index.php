@@ -27,8 +27,8 @@ if (isset($_GET["reset"])) {
 ?>
 
 <div>
-  <p class="Hoofdtext">Home</p>
-
+<!--  <p class="Hoofdtext">Home</p>-->
+<br>
   <div class="con_banner">
     <img class="banner_home" src="Img/IMG_0009-768x5766.jpg" alt="">
       <p class="welkom_text" ><b>Welkom bij VVZA portaal</b></p>
