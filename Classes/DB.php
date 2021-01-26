@@ -5,7 +5,7 @@ class DB
     {
         $dns = 'mysql:host=127.0.0.1;dbname=vvza_database';
         $user = 'root';
-        $pass = '';
+        $pass = 'root';
 
         return new PDO($dns, $user, $pass);
     }
